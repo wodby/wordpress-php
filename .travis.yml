@@ -9,8 +9,8 @@ env:
   global:
     - REPO=wodby/wordpress-php
   matrix:
-    - PHP_VER=7.0
-    - PHP_VER=7.1
+    - VERSION=7.0
+    - VERSION=7.1
 
 install:
   - cd ./$VERSION
