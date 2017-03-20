@@ -31,4 +31,4 @@ phpAction files-import source="${FILES_ARCHIVE_URL}"
 phpAction cache-clear
 dockerExec php tests.sh
 
-#docker-compose down
+docker-compose down
