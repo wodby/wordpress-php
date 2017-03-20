@@ -7,16 +7,14 @@ services:
 
 env:
   global:
-    - REPO=wodby/wordpress-php
+    - LATEST_VERSION=7.1
   matrix:
     - VERSION=7.0
     - VERSION=7.1
 
-install:
+script:
   - cd ./$VERSION
-  - make
-
-script: make test
+  - make && make test
 
 after_success: |
   if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
@@ -27,14 +25,9 @@ after_success: |
       make VERSION="$VERSION-$TRAVIS_TAG" release
     fi
 
-    if [ "$VERSION" == "7.0" ]; then
+    if [ "$VERSION" == "$LATEST_VERSION" ]; then
       make VERSION=latest release
     fi
   fi
 
 after_failure: make logs
-
-notifications:
-  email:
-    on_success: never
-    on_failure: always

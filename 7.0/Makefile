@@ -7,12 +7,13 @@ NAME = wordpress-php-$(VERSION)
 
 .PHONY: build test push shell run start stop logs clean release
 
+default: build
+
 build:
 	docker build -t $(REPO):$(VERSION) ./
 
 test:
-	docker build -t $(REPO)-test:$(VERSION) ./test
-	docker run --rm --name $(NAME)-test $(REPO)-test:$(VERSION)
+	cd ./test/4 && IMAGE=$(REPO):$(VERSION) ./run.sh
 
 push:
 	docker push $(REPO):$(VERSION)
@@ -34,9 +35,6 @@ logs:
 
 clean:
 	-docker rm -f $(NAME)
-	-docker rm -f $(NAME)-test
 
 release: build
 	make push -e VERSION=$(VERSION)
-
-default: build
