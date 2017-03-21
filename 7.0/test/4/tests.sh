@@ -20,6 +20,6 @@ echo -n "Checking imported files... "
 curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/public/logo.png" | grep -q "200 OK"
 echo "OK"
 
-echo -n "Checking Drupal homepage... "
+echo -n "Checking WordPress homepage... "
 curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "Welcome to WordPress"
 echo "OK"
