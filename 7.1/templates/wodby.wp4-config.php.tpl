@@ -5,7 +5,7 @@
 
 $wodby['db']['host'] = '{{ getenv "DB_HOST" "" }}';
 $wodby['db']['name'] = '{{ getenv "DB_NAME" "" }}';
-$wodby['db']['username'] = '{{ getenv "DB_USERNAME" "" }}';
+$wodby['db']['username'] = '{{ getenv "DB_USER" "" }}';
 $wodby['db']['password'] = '{{ getenv "DB_PASSWORD" "" }}';
 $wodby['db']['charset'] = '{{ getenv "DB_CHARSET" "utf8" }}';
 $wodby['db']['collation'] = '{{ getenv "DB_COLLATION" "" }}';

@@ -6,9 +6,7 @@ services:
     environment:
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html
-      NGINX_SERVER_NAME: wordpress4.com
-    ports:
-      - 8080:80
+      NGINX_SERVER_NAME: wordpress4.test
     volumes:
       - codebase:/var/www/html
       - files:/mnt/files
@@ -32,7 +30,7 @@ services:
     image: $IMAGE
     environment:
       DOCROOT_SUBDIR: ""
-      BASE_URL: http://wordpress4.com
+      BASE_URL: http://wordpress4.test
       WP_VERSION: 4
       WP_AUTH_KEY: wp-auth-key
       WP_AUTH_SALT: wp-auth-salt
@@ -45,7 +43,7 @@ services:
       WP_TABLE_PREFIX: wp_
       WP_DEBUG: 0
       DB_HOST: mariadb
-      DB_USERNAME: wordpress
+      DB_USER: wordpress
       DB_PASSWORD: wordpress
       DB_NAME: wordpress
       DB_CHARSET: utf8

@@ -38,5 +38,3 @@ if [[ -d "${tmp_dir}" ]]; then
 fi
 
 rm -rf "${tmp_dir}"
-
-exec init-files.sh

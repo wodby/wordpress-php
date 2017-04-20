@@ -32,10 +32,9 @@ else
 fi
 
 # Import db.
-mysql -h"${DB_HOST}" -u"${DB_USERNAME}" -p"${DB_PASSWORD}" -e "DROP DATABASE IF EXISTS ${DB_NAME};"
-mysql -h"${DB_HOST}" -u"${DB_USERNAME}" -p"${DB_PASSWORD}" -e "CREATE DATABASE ${DB_NAME};"
-mysql -h"${DB_HOST}" -u"${DB_USERNAME}" -p"${DB_PASSWORD}" "${DB_NAME}" < "${tmp_dir}/database.sql"
-rm -f "${tmp_dir}/database.sql"
+mysql -h"${DB_HOST}" -u"${DB_USER}" -p"${DB_PASSWORD}" -e "DROP DATABASE IF EXISTS ${DB_NAME};"
+mysql -h"${DB_HOST}" -u"${DB_USER}" -p"${DB_PASSWORD}" -e "CREATE DATABASE ${DB_NAME};"
+mysql -h"${DB_HOST}" -u"${DB_USER}" -p"${DB_PASSWORD}" "${DB_NAME}" < "${tmp_dir}/database.sql"
 
 # Import files.
 if [[ -d "${tmp_dir}/wp-content/uploads" ]]; then
@@ -43,10 +42,5 @@ if [[ -d "${tmp_dir}/wp-content/uploads" ]]; then
     rm -rf "${tmp_dir}/wp-content/uploads"
 fi
 
-# Import code.
-rsync -rlt --delete --force --exclude ".git" "${tmp_dir}/" "${WP_ROOT}/"
-
 rm -rf "${tmp_source_dir}"
 rm -rf "${tmp_dir}"
-
-exec init-wordpress.sh

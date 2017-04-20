@@ -1,20 +1,46 @@
 #!/usr/bin/env bash
 
+# TODO: test redis and varnish plugins, create duplicator archive from CLI.
+
 set -e
 
 if [[ -n "${DEBUG}" ]]; then
   set -x
 fi
 
+runAction() {
+    make "${@}" -f /usr/local/bin/actions.mk
+}
+
 if [[ "${DOCROOT_SUBDIR}" == "" ]]; then
-	WP_ROOT="${DOCROOT_SUBDIR}"
+	WP_ROOT="${APP_ROOT}"
 else
 	WP_ROOT="${APP_ROOT}/${DOCROOT_SUBDIR}"
 fi
 
 WP_DOMAIN="$( echo "${BASE_URL}" | sed 's/https\?:\/\///' )"
 
-wp cli --path="${WP_ROOT}" version | grep -q 'WP-CLI'
+cd "${WP_ROOT}"
+
+wp cli version | grep -q 'WP-CLI'
+
+wp core download
+wp core config --dbname="${DB_NAME}" --dbuser="${DB_USER}" --dbpass="${DB_PASSWORD}" --dbhost="${DB_HOST}"
+wp core install --url="${BASE_URL}" --title="WordPress 4" --admin_user=admin --admin_password=admin --admin_email=admin@example.com
+wp core is-installed
+
+DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpress${WP_VERSION}/wodby-wordpress${WP_VERSION}-latest.zip"
+FILES_ARCHIVE_URL="https://s3.amazonaws.com/wodby-sample-files/drupal-php-import-test/files.tar.gz"
+
+runAction duplicator-import source="${DUPLICATOR_ARCHIVE_URL}"
+runAction files-import source="${FILES_ARCHIVE_URL}"
+runAction init-wordpress
+runAction cache-clear
+
+wp core is-installed
+rm wp-config.php
+runAction init-wordpress
+wp core is-installed
 
 echo -n "Checking imported files... "
 curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/public/logo.png" | grep -q "200 OK"
