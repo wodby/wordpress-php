@@ -3,7 +3,7 @@
 set -e
 
 if [[ -n "${DEBUG}" ]]; then
-  set -x
+    set -x
 fi
 
 source=$1
@@ -38,7 +38,7 @@ mysql -h"${DB_HOST}" -u"${DB_USER}" -p"${DB_PASSWORD}" "${DB_NAME}" < "${tmp_dir
 
 # Import files.
 if [[ -d "${tmp_dir}/wp-content/uploads" ]]; then
-    rsync -rlt --delete --force "${tmp_dir}/wp-content/uploads/" "${WODBY_DIR_FILES}/public/"
+    rsync -rlt --force "${tmp_dir}/wp-content/uploads/" "${WODBY_DIR_FILES}/public/"
     rm -rf "${tmp_dir}/wp-content/uploads"
 fi
 

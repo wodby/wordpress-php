@@ -2,7 +2,7 @@ version: "2"
 
 services:
   nginx:
-    image: wodby/wordpress-nginx:4-1.10
+    image: wodby/wordpress-nginx:4-1.13
     environment:
       NGINX_BACKEND_HOST: php
       NGINX_SERVER_ROOT: /var/www/html
@@ -49,7 +49,6 @@ services:
       DB_CHARSET: utf8
       DB_COLLATION: ""
       REDIS_HOST: redis
-      REDIS_PORT: 6379
       REDIS_PASSWORD: redis
       PHP_SENDMAIL_PATH: /bin/true
       SSH_PRIVATE_KEY: |-

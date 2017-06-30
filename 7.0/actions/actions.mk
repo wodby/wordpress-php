@@ -19,6 +19,11 @@ endif
 
 default: cache-clear
 
+git-checkout:
+	$(call check_defined, target)
+	rm -f $(WP_ROOT)/wp-content/uploads
+	git-checkout.sh $(target) $(is_hash)
+
 duplicator-import:
 	$(call check_defined, source)
 	WP_ROOT=$(WP_ROOT) duplicator-import.sh $(source)

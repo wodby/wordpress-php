@@ -6,8 +6,9 @@ ENV WODBY_DIR_CONF /var/www/conf
 RUN su-exec www-data composer global require wp-cli/wp-cli && \
     su-exec www-data composer clear-cache && \
     mv /usr/local/bin/actions.mk /usr/local/bin/php.mk && \
-    mkdir -p $WODBY_DIR_FILES && \
-    mkdir -p $WODBY_DIR_CONF && \
+    # Change overridden target name to avoid warnings.
+    sed -i 's/git-checkout:/php-git-checkout:/' /usr/local/bin/php.mk && \
+    mkdir -p $WODBY_DIR_FILES $WODBY_DIR_CONF && \
     chown -R www-data:www-data $WODBY_DIR_CONF
 
 COPY templates /etc/gotpl/
