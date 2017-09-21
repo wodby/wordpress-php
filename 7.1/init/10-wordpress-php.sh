@@ -12,7 +12,8 @@ execTpl() {
     fi
 }
 
-chown www-data:www-data "${WODBY_DIR_FILES}"
+mkdir -p "${WODBY_DIR_FILES}/public"
+chown www-data:www-data "${WODBY_DIR_FILES}" "${WODBY_DIR_FILES}/public"
 
 if [[ -n "${WODBY_APP_NAME}" && -n "${WP_VERSION}" ]]; then
     execTpl "wodby.wp${WP_VERSION}-config.php.tpl" "${WODBY_DIR_CONF}/wodby.wp-config.php"
