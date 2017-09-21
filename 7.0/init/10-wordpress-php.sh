@@ -14,7 +14,7 @@ execTpl() {
 
 chown www-data:www-data "${WODBY_DIR_FILES}"
 
-if [[ -n "${WODBY_APP_NAME}" ]]; then
+if [[ -n "${WODBY_APP_NAME}" && -n "${WP_VERSION}" ]]; then
     execTpl "wodby.wp${WP_VERSION}-config.php.tpl" "${WODBY_DIR_CONF}/wodby.wp-config.php"
     execTpl "wp-config.php.tpl" "${WODBY_DIR_CONF}/wp-config.php"
 fi

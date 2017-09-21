@@ -30,6 +30,7 @@ services:
     image: $IMAGE
     environment:
       DOCROOT_SUBDIR: ""
+      WODBY_APP_NAME: test
       BASE_URL: http://wordpress4.test
       WP_VERSION: 4
       WP_AUTH_KEY: wp-auth-key
