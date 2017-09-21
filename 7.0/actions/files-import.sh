@@ -35,7 +35,9 @@ fi
 
 rm "${archive_file}"
 
-if [[ -d "${tmp_dir}" ]]; then
+if [[ -d "${tmp_dir}/public" ]]; then
+    rsync -rlt --force "${tmp_dir}/public/" "${WODBY_DIR_FILES}/public/"
+else
     rsync -rlt --force "${tmp_dir}/" "${WODBY_DIR_FILES}/public/"
 fi
 
