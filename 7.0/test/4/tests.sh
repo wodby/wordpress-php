@@ -47,7 +47,7 @@ runAction init-wordpress
 wp core is-installed
 
 echo -n "Checking imported files... "
-curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/public/logo.png" | grep -q "200 OK"
+curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/logo.png" | grep -q "200 OK"
 echo "OK"
 
 echo -n "Checking WordPress homepage... "
