@@ -3,6 +3,8 @@
  * Wodby-specific configuration file.
  */
 
+$wodby['base_url'] = '{{ getenv "BASE_URL" "" }}';
+
 $wodby['db']['host'] = '{{ getenv "DB_HOST" "" }}';
 $wodby['db']['name'] = '{{ getenv "DB_NAME" "" }}';
 $wodby['db']['username'] = '{{ getenv "DB_USER" "" }}';
@@ -32,6 +34,9 @@ if (isset($_SERVER['HTTP_X_REAL_IP'])) {
 if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
   $_SERVER['HTTPS'] = 'on';
 }
+
+defined('WP_HOME')    || define('WP_HOME', $wodby['base_url']);
+defined('WP_SITEURL') || define('WP_SITEURL', $wodby['base_url']);
 
 defined('DB_HOST')     || define('DB_HOST', $wodby['db']['host']);
 defined('DB_NAME')     || define('DB_NAME', $wodby['db']['name']);

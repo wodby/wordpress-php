@@ -18,9 +18,6 @@ ${disclaimer} \\
 require_once '${WODBY_DIR_CONF}/wodby.wp-config.php';" "${wp_config}"
 fi
 
-wp --path="${WP_ROOT}" option update home "${BASE_URL}"
-wp --path="${WP_ROOT}" option update siteurl "${BASE_URL}"
-
 # Sync and symlink files dir if it's not symlink already.
 WP_FILES="${WP_ROOT}/wp-content/uploads"
 mkdir -p "${WP_FILES}"
