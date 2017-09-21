@@ -33,6 +33,10 @@ DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpre
 FILES_ARCHIVE_URL="https://s3.amazonaws.com/wodby-sample-files/drupal-php-import-test/files.tar.gz"
 
 runAction duplicator-import source="${DUPLICATOR_ARCHIVE_URL}"
+
+# TODO: build new sample duplicator archive from new vanilla image (normally should be w/o uploads dir)
+rm -rf "${WP_ROOT}/wp-content/uploads"
+
 runAction files-import source="${FILES_ARCHIVE_URL}"
 runAction init-wordpress
 runAction cache-clear
