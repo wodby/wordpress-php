@@ -11,7 +11,7 @@ wp_config="${WP_ROOT}/wp-config.php"
 
 if [[ ! -f "${wp_config}" ]]; then
     cp -f "${WODBY_DIR_CONF}/wp-config.php" "${wp_config}"
-elif [[ $( grep -ic "wodby.wp-config.php.tpl" "${wp_config}" ) -eq 0 ]]; then
+elif [[ $( grep -ic "wodby.wp-config.php" "${wp_config}" ) -eq 0 ]]; then
     chmod 644 "${wp_config}"
     sed -i "/wp-settings.php/i \\
 ${disclaimer} \\
