@@ -21,21 +21,21 @@ require_once '${WODBY_DIR_CONF}/wodby.wp-config.php';" "${wp_config}"
 fi
 
 # Symlink files dir
-WP_CONTENT="${WP_ROOT}/wp-content"
-WP_FILES="${WP_CONTENT}/uploads"
+wp_content="${WP_ROOT}/wp-content"
+wp_files="${wp_content}/uploads"
 
-if [[ -d "${WP_FILES}" ]]; then
-    if [[ ! -L "${WP_FILES}" ]]; then
-        if [[ "$(ls -A "${WP_FILES}")" ]]; then
-            echo "Error: directory ${WP_FILES} exists and is not empty. The files directory can not be under version control or must be empty."
+if [[ -d "${wp_files}" ]]; then
+    if [[ ! -L "${wp_files}" ]]; then
+        if [[ "$(ls -A "${wp_files}")" ]]; then
+            echo "Error: directory ${wp_files} exists and is not empty. The files directory can not be under version control or must be empty."
             exit 1
         # If dir is not symlink and empty, remove it and link.
         else
-            rm -rf "${WP_FILES}"
-            ln -sf "${WODBY_DIR_FILES}/public" "${WP_FILES}"
+            rm -rf "${wp_files}"
+            ln -sf "${WODBY_DIR_FILES}/public" "${wp_files}"
         fi
     fi
 else
-    mkdir -p "${WP_CONTENT}"
-    ln -sf "${WODBY_DIR_FILES}/public" "${WP_FILES}"
+    mkdir -p "${wp_content}"
+    ln -sf "${WODBY_DIR_FILES}/public" "${wp_files}"
 fi
