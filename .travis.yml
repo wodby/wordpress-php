@@ -18,7 +18,7 @@ env:
 
 script:
   - cd ./$VERSION
-  - make && make test
+  - make DEBUG=$DEBUG && make test DEBUG=$DEBUG
 
 after_success: |
   if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
@@ -33,5 +33,3 @@ after_success: |
       make release VERSION=latest
     fi
   fi
-
-after_failure: make logs

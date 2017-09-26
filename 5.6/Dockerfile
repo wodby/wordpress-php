@@ -1,6 +1,6 @@
-ARG BASE_IMAGE
+ARG FROM_TAG
 
-FROM ${BASE_IMAGE}
+FROM wodby/php:${FROM_TAG}
 
 ENV WODBY_DIR_FILES /mnt/files
 ENV WODBY_DIR_CONF /var/www/conf

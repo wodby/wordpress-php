@@ -5,12 +5,12 @@ VERSION ?= 5.6
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(VERSION)
 DEBUG = 0
-BASE_IMAGE = wodby/php:5.6
+FROM_TAG = 5.6
 
 ifeq ($(DEBUG), 1)
-	override VERSION := $(VERSION)-debug
-	BASE_IMAGE := $(BASE_IMAGE)-debug
-	NAME := $(NAME)-debug
+    override VERSION := $(VERSION)-debug
+    FROM_TAG := $(FROM_TAG)-debug
+    NAME := $(NAME)-debug
 endif
 
 .PHONY: build test push shell run start stop logs clean release
@@ -18,7 +18,7 @@ endif
 default: build
 
 build:
-	docker build -t $(REPO):$(VERSION) --build-arg BASE_IMAGE=$(BASE_IMAGE) ./
+	docker build -t $(REPO):$(VERSION) --build-arg FROM_TAG=$(FROM_TAG) ./
 
 test:
 	cd ./test/4 && IMAGE=$(REPO):$(VERSION) ./run.sh
