@@ -15,6 +15,7 @@ Images are built via [Travis CI](https://travis-ci.org/wodby/wordpress-php) and 
 | --- | ------------ |
 | [7.1](https://github.com/wodby/wordpress-php/tree/master/7.1/Dockerfile) | 3.6 |  
 | [7.0](https://github.com/wodby/wordpress-php/tree/master/7.0/Dockerfile) | 3.6 |  
+| [5.6](https://github.com/wodby/wordpress-php/tree/master/5.6/Dockerfile) | 3.6 |  
 
 ## Environment Variables
 

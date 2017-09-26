@@ -9,8 +9,12 @@ env:
   global:
     - LATEST_VERSION=7.1
   matrix:
-    - VERSION=7.0
-    - VERSION=7.1
+    - VERSION=7.1 DEBUG=0
+    - VERSION=7.0 DEBUG=0
+    - VERSION=5.6 DEBUG=0
+    - VERSION=7.1 DEBUG=1
+    - VERSION=7.0 DEBUG=1
+    - VERSION=5.6 DEBUG=1
 
 script:
   - cd ./$VERSION
@@ -19,14 +23,14 @@ script:
 after_success: |
   if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
     docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    make release
+    make release DEBUG=$DEBUG
 
     if [ -n "$TRAVIS_TAG" ]; then
-      make VERSION="$VERSION-$TRAVIS_TAG" release
+      make release VERSION="$VERSION-$TRAVIS_TAG" DEBUG=$DEBUG
     fi
 
-    if [ "$VERSION" == "$LATEST_VERSION" ]; then
-      make VERSION=latest release
+    if [ "$VERSION" == "$LATEST_VERSION" && $DEBUG != 1 ]; then
+      make release VERSION=latest
     fi
   fi
 

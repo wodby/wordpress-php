@@ -1,4 +1,6 @@
-FROM wodby/php:7.1
+ARG BASE_IMAGE
+
+FROM ${BASE_IMAGE}
 
 ENV WODBY_DIR_FILES /mnt/files
 ENV WODBY_DIR_CONF /var/www/conf

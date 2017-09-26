@@ -1,11 +1,11 @@
 -include env_make
 
-VERSION ?= 7.0
+VERSION ?= 5.6
 
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(VERSION)
 DEBUG = 0
-BASE_IMAGE = wodby/php:7.0
+BASE_IMAGE = wodby/php:5.6
 
 ifeq ($(DEBUG), 1)
 	override VERSION := $(VERSION)-debug
