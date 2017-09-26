@@ -21,7 +21,8 @@ require_once '${WODBY_DIR_CONF}/wodby.wp-config.php';" "${wp_config}"
 fi
 
 # Symlink files dir
-WP_FILES="${WP_ROOT}/wp-content/uploads"
+WP_CONTENT="${WP_ROOT}/wp-content"
+WP_FILES="${WP_CONTENT}/uploads"
 
 if [[ -d "${WP_FILES}" ]]; then
     if [[ ! -L "${WP_FILES}" ]]; then
@@ -35,5 +36,6 @@ if [[ -d "${WP_FILES}" ]]; then
         fi
     fi
 else
+    mkdir -p "${WP_CONTENT}"
     ln -sf "${WODBY_DIR_FILES}/public" "${WP_FILES}"
 fi
