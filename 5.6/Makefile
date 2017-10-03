@@ -4,10 +4,10 @@ VERSION ?= 5.6
 
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(VERSION)
-DEBUG = 0
+PHP_DEBUG = 0
 FROM_TAG = 5.6
 
-ifeq ($(DEBUG), 1)
+ifeq ($(PHP_DEBUG), 1)
     override VERSION := $(VERSION)-debug
     FROM_TAG := $(FROM_TAG)-debug
     NAME := $(NAME)-debug
