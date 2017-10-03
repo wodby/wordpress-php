@@ -8,6 +8,7 @@ fi
 
 docker-compose up -d
 docker-compose exec mariadb make max_try=12 wait_seconds=5 check-ready -f /usr/local/bin/actions.mk
-docker-compose exec nginx make max_try=10 wait_seconds=1 check-ready -f /usr/local/bin/actions.mk
-docker-compose exec --user=82 php tests.sh
+docker-compose exec nginx make max_try=10 check-ready -f /usr/local/bin/actions.mk
+docker-compose exec php make max_try=10 check-ready -f /usr/local/bin/actions.mk
+docker-compose exec php tests.sh
 docker-compose down

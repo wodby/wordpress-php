@@ -8,7 +8,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-runAction() {
+run_action() {
     make "${@}" -f /usr/local/bin/actions.mk
 }
 
@@ -32,18 +32,18 @@ wp core is-installed
 DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpress${WP_VERSION}/wodby-wordpress${WP_VERSION}-latest.zip"
 FILES_ARCHIVE_URL="https://s3.amazonaws.com/wodby-sample-files/drupal-php-import-test/files.tar.gz"
 
-runAction duplicator-import source="${DUPLICATOR_ARCHIVE_URL}"
+run_action duplicator-import source="${DUPLICATOR_ARCHIVE_URL}"
 
 # TODO: build new sample duplicator archive from new vanilla image (normally should be w/o uploads dir)
 rm -rf "${WP_ROOT}/wp-content/uploads"
 
-runAction files-import source="${FILES_ARCHIVE_URL}"
-runAction init-wordpress
-runAction cache-clear
+run_action files-import source="${FILES_ARCHIVE_URL}"
+run_action init-wordpress
+run_action cache-clear
 
 wp core is-installed
 rm wp-config.php
-runAction init-wordpress
+run_action init-wordpress
 wp core is-installed
 
 echo -n "Checking imported files... "

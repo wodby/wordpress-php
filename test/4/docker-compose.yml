@@ -29,6 +29,7 @@ services:
   php:
     image: $IMAGE
     environment:
+      DEBUG: 1
       DOCROOT_SUBDIR: ""
       WODBY_APP_NAME: test
       BASE_URL: http://wordpress4.test
