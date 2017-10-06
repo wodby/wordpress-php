@@ -1,6 +1,6 @@
 -include env_make
 
-WORDPRESS_VER = 4
+WORDPRESS_VER ?= 4
 PHP_VER ?= 7.1
 TAG ?= $(PHP_VER)
 
@@ -8,7 +8,7 @@ REPO = wodby/wordpress-php
 NAME = wordpress-php-$(TAG)
 FROM_TAG = $(PHP_VER)
 
-PHP_DEBUG = 0
+PHP_DEBUG ?= 0
 
 ifeq ($(PHP_DEBUG), 1)
     override TAG := $(TAG)-debug
