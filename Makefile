@@ -1,8 +1,8 @@
 -include env_make
 
-WORDPRESS_VER ?= 4
+WORDPRESS_VER = 4
 PHP_VER ?= 7.1
-TAG ?= 7.1
+TAG ?= $(PHP_VER)
 
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(TAG)
