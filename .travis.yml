@@ -31,7 +31,7 @@ after_success: |
     make release
 
     if [ -n "$TRAVIS_TAG" ]; then
-      make release TAG="$VERSION-$TRAVIS_TAG"
+      make release TAG="$PHP_VER-$TRAVIS_TAG"
     fi
 
     if [ "$PHP_VER" == "$LATEST_PHP_VER" && $PHP_DEBUG != 1 ]; then
