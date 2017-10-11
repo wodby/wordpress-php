@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/wodby/wordpress-php.svg?branch=master)](https://travis-ci.org/wodby/wordpress-php)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
+[![Docker Layers](https://images.microbadger.com/badges/image/wodby/composer-php.svg)](https://microbadger.com/images/wodby/composer-php)
 [![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Docker Images
