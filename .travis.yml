@@ -1,4 +1,4 @@
-language: python
+language: bash
 
 sudo: required
 
@@ -26,15 +26,13 @@ script:
   - make && make test
 
 after_success: |
-  if [ "$TRAVIS_PULL_REQUEST" == "false" ] && ([ "$TRAVIS_BRANCH" == "master" ] || [ -n "$TRAVIS_TAG" ]); then
-    docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+  if [[ "${TRAVIS_PULL_REQUEST}" == "false" && ("${TRAVIS_BRANCH}" == "master"  || -n "${TRAVIS_TAG}") ]]; then
+    docker login -u "${DOCKER_USERNAME}" -p "${DOCKER_PASSWORD}"
     make release
 
-    if [ -n "$TRAVIS_TAG" ]; then
-      make release TAG="$PHP_VER-$TRAVIS_TAG"
-    fi
-
-    if [ "$PHP_VER" == "$LATEST_PHP_VER" && $PHP_DEBUG != 1 ]; then
-      make release TAG=latest
+    if [[ -n "${TRAVIS_TAG}" ]]; then
+      make release TAG="${PHP_VER}-${TRAVIS_TAG}"
+    elif [[ "${PHP_VER}" == "${LATEST_PHP_VER}" && "${PHP_DEBUG}" == 0 ]]; then
+      make release TAG="latest"
     fi
   fi
