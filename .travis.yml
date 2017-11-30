@@ -39,3 +39,8 @@ after_success: |
       make release TAG="latest"
     fi
   fi
+
+notifications:
+  on_failure: never
+  slack:
+    secure: "DWhLF4Cxu6PGs/zs7XyXHma6HoGy3TpR3qredmB1n8rnPFNuzbG1uJqMwWHgvN5+OaeQQQyoC4zQQOc4O3IWs7pa1F59Lm0ivnvPWw5msrgQoRSaRtVE3t1j4jCfRM5LJnAT2tbubmtX6gX5/8jlGjjL9gDaZDcX3yy5fC/OPAHVQ2ekTva8c8IivmfXeL4P0tsGScDiLYRiwFuQDX5vtPhmqMMJeczq3T2dEzaPQUjZnXBzGrwe+9zv1xzLqwJaYVHI0wRV1UoacElXGo36evzj/NcYiGM0j/wf7J1QI5uzhplw5XMf0+YE8pcrSseCLqyt19l5UjWV6LsLpw8Qt9+4I4DrIlPESm9+mpcV8Wdlp5B7OiLt2/AgXmMZY9IiLVruiqwLf3u6eQ8Uem+68vkRUu2oet/J7UTXozc65y9JeEBlJIAQTunvDGIs2+XQ1ORmzpYWVTTqN7YNk2unt5CTtYn4pl/RT+hPsKJaeAEzdxfY9ZJH72JsMYTKjGrnL7bEeK0S0EsE319a5r4IQRbT2P9GnXqy34wKHzqeNPHAX5nIAeyAJyy5k+D/21ziYwokM3+7qe/mdqPGvZG7wir7XRRUAD4oVAqLmyzi1K85npuFgnmIZVuXGdHoD5TMe7cBJrY2c5QJUZctiOnaH9Z1mK7gdiiRGjYlF3Rx4B8="
