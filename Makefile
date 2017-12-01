@@ -1,16 +1,22 @@
 -include env_make
 
 PHP_VER ?= 7.2
-TAG ?= $(PHP_VER)
 
-REPO = wodby/wordpress-php
-NAME = wordpress-php-$(TAG)
 FROM_TAG = $(PHP_VER)
+REPO = wodby/wordpress-php
+NAME = wordpress-php-$(PHP_VER)
+
+ifeq ($(TAG),)
+    ifeq ($(PHP_DEBUG),)
+        TAG ?= $(PHP_VER)
+    else
+        TAG := $(PHP_VER)-debug
+    endif
+endif
 
 ifneq ($(PHP_DEBUG),)
-    override TAG := $(TAG)-debug
-    FROM_TAG := $(FROM_TAG)-debug
     NAME := $(NAME)-debug
+    FROM_TAG := $(FROM_TAG)-debug
 endif
 
 ifneq ($(FROM_STABILITY_TAG),)
@@ -18,9 +24,9 @@ ifneq ($(FROM_STABILITY_TAG),)
 endif
 
 ifneq ($(STABILITY_TAG),)
-ifneq ($(TAG),latest)
-    override TAG := $(TAG)-$(STABILITY_TAG)
-endif
+    ifneq ($(TAG),latest)
+        override TAG := $(TAG)-$(STABILITY_TAG)
+    endif
 endif
 
 .PHONY: build test push shell run start stop logs clean release
