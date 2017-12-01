@@ -17,9 +17,11 @@
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.1`, `latest` [_(Dockerfile)_]
+* `7.2`, `latest` [_(Dockerfile)_]
+* `7.1` [_(Dockerfile)_]
 * `7.0` [_(Dockerfile)_]
 * `5.6` [_(Dockerfile)_]
+* `7.2-debug` [_(Dockerfile)_]
 * `7.1-debug` [_(Dockerfile)_]
 * `7.0-debug` [_(Dockerfile)_]
 * `5.6-debug` [_(Dockerfile)_]
@@ -30,11 +32,7 @@ For better reliability we additionally release images with stability tags (`wodb
 
 ## Tools
 
-[WP CLI]: https://packagist.org/packages/wp-cli/wp-cli
-
-| Tool                       | 7.1     | 7.0     | 5.6     |
-| -------------------------- | ------- | ------- | ------- |
-| [WP CLI]                   | latest  | latest  | latest  |
+[WP CLI (latest version)](https://packagist.org/packages/wp-cli/wp-cli)
 
 ## Environment Variables
 
