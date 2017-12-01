@@ -1,16 +1,13 @@
 -include env_make
 
-WORDPRESS_VER ?= 4
-PHP_VER ?= 7.1
+PHP_VER ?= 7.2
 TAG ?= $(PHP_VER)
 
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(TAG)
 FROM_TAG = $(PHP_VER)
 
-PHP_DEBUG ?= 0
-
-ifneq ($(PHP_DEBUG), 0)
+ifneq ($(PHP_DEBUG),)
     override TAG := $(TAG)-debug
     FROM_TAG := $(FROM_TAG)-debug
     NAME := $(NAME)-debug
@@ -34,7 +31,7 @@ build:
 	docker build -t $(REPO):$(TAG) --build-arg FROM_TAG=$(FROM_TAG) ./
 
 test:
-	cd ./test/$(WORDPRESS_VER) && IMAGE=$(REPO):$(TAG) ./run.sh
+	cd ./test/4 && IMAGE=$(REPO):$(TAG) ./run.sh
 
 push:
 	docker push $(REPO):$(TAG)
