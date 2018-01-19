@@ -26,7 +26,7 @@ fi
 if [[ -d "${tmp_dir}/wp-content/uploads" ]]; then
     echo "Files directory found: wp-content/uploads. Importing..."
 
-    rsync -rlt --force "${tmp_dir}/wp-content/uploads/" "${WODBY_DIR_FILES}/public/"
+    rsync -rlt --force "${tmp_dir}/wp-content/uploads/" "${FILES_DIR}/public/"
     rm -rf "${tmp_dir}/wp-content/uploads"
 else
     echo "No files directory (wp-content/uploads) found for import"

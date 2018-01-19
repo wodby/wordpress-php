@@ -24,7 +24,7 @@ $wodby['wp']['table_prefix'] = '{{ getenv "WP_TABLE_PREFIX" "wp_" }}';
 $wodby['wp']['debug'] = '{{ getenv "WP_DEBUG" "" }}';
 
 $wodby['redis']['host'] = '{{ getenv "REDIS_HOST" "" }}';
-$wodby['redis']['port'] = '{{ getenv "REDIS_SERVICE_PORT" "6379" }}';
+$wodby['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
 $wodby['redis']['password'] = '{{ getenv "REDIS_PASSWORD" "" }}';
 
 if (isset($_SERVER['HTTP_X_REAL_IP'])) {

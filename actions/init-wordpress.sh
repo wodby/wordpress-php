@@ -12,30 +12,15 @@ wp_config="${WP_ROOT}/wp-config.php"
 mkdir -p "${WP_ROOT}"
 
 if [[ ! -f "${wp_config}" ]]; then
-    cp -f "${WODBY_DIR_CONF}/wp-config.php" "${wp_config}"
+    cp -f "${CONF_DIR}/wp-config.php" "${wp_config}"
 elif [[ $( grep -ic "wodby.wp-config.php" "${wp_config}" ) -eq 0 ]]; then
     chmod 644 "${wp_config}"
     sed -i "/wp-settings.php/i \\
 ${disclaimer} \\
-require_once '${WODBY_DIR_CONF}/wodby.wp-config.php';" "${wp_config}"
+require_once '${CONF_DIR}/wodby.wp-config.php';" "${wp_config}"
 fi
 
 # Symlink files dir
 wp_content="${WP_ROOT}/wp-content"
-wp_files="${wp_content}/uploads"
-
-if [[ -d "${wp_files}" ]]; then
-    if [[ ! -L "${wp_files}" ]]; then
-        if [[ "$(ls -A "${wp_files}")" ]]; then
-            echo "Error: directory ${wp_files} exists and is not empty. The files directory can not be under version control or must be empty."
-            exit 1
-        # If dir is not symlink and empty, remove it and link.
-        else
-            rm -rf "${wp_files}"
-            ln -sf "${WODBY_DIR_FILES}/public" "${wp_files}"
-        fi
-    fi
-else
-    mkdir -p "${wp_content}"
-    ln -sf "${WODBY_DIR_FILES}/public" "${wp_files}"
-fi
+mkdir -p "${wp_content}"
+init-public-storage.sh "${wp_content}/uploads"

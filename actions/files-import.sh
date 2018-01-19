@@ -11,10 +11,12 @@ tmp_dir="/tmp/source"
 
 get-archive.sh "${source}" "${tmp_dir}" "zip tgz tar.gz tar"
 
+# TODO: deprecate /public import from non-wodby backups.
+# TODO: use generic files-import.sh from wodby/php
 if [[ -d "${tmp_dir}/public" ]]; then
-    rsync -rlt --force "${tmp_dir}/public/" "${WODBY_DIR_FILES}/public/"
+    rsync -rlt --force "${tmp_dir}/public/" "${FILES_DIR}/public/"
 else
-    rsync -rlt --force "${tmp_dir}/" "${WODBY_DIR_FILES}/public/"
+    rsync -rlt --force "${tmp_dir}/" "${FILES_DIR}/public/"
 fi
 
 rm -rf "${tmp_dir}"
