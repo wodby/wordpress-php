@@ -1,6 +1,6 @@
 -include /usr/local/bin/php.mk
 
-.PHONY: duplicator-import files-import init-wordpress cache-clear cache-rebuild
+.PHONY: duplicator-import init-wordpress cache-clear
 
 check_defined = \
     $(strip $(foreach 1,$1, \
@@ -8,8 +8,6 @@ check_defined = \
 __check_defined = \
     $(if $(value $1),, \
       $(error Required parameter is missing: $1$(if $2, ($2))))
-
-target ?= all
 
 ifeq ("$(DOCROOT_SUBDIR)", "")
 	WP_ROOT=$(APP_ROOT)
@@ -19,20 +17,12 @@ endif
 
 default: cache-clear
 
-git-checkout:
-	$(call check_defined, target)
-	git-checkout.sh $(target) $(is_hash)
-
 duplicator-import:
 	$(call check_defined, source)
-	WP_ROOT=$(WP_ROOT) duplicator-import.sh $(source)
-
-files-import:
-	$(call check_defined, source)
-	WP_ROOT=$(WP_ROOT) files-import.sh $(source)
+	duplicator-import.sh $(source)
 
 init-wordpress:
 	WP_ROOT=$(WP_ROOT) init-wordpress.sh
 
 cache-clear:
-	wp cache flush
+	wp cache flush --path=WP_ROOT

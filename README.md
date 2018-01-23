@@ -36,6 +36,24 @@ For better reliability we additionally release images with stability tags (`wodb
 
 See at [wodby/php](https://github.com/wodby/php)
 
+## Orchestration Actions
+
+Usage:
+```
+make COMMAND [params ...]
+ 
+commands:
+    duplicator-import source
+    init-wordpress   
+    cache-clear
+    
+default params values:
+    target all
+    is_hash 0 
+```
+
+See [wodby/php](https://github.com/wodby/php) for all actions
+
 ## Complete WordPress Stack
 
 See [Docker4WordPress](https://github.com/wodby/docker4wordpress).

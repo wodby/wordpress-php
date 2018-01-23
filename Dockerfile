@@ -1,6 +1,6 @@
-ARG FROM_TAG
+ARG BASE_IMAGE_TAG
 
-FROM wodby/php:${FROM_TAG}
+FROM wodby/php:${BASE_IMAGE_TAG}
 
 USER root
 
@@ -9,9 +9,7 @@ RUN set -ex; \
     su-exec www-data composer global require wp-cli/wp-cli; \
     su-exec www-data composer clear-cache; \
     \
-    mv /usr/local/bin/actions.mk /usr/local/bin/php.mk; \
-    # Change overridden target name to avoid warnings.
-    sed -i 's/git-checkout:/php-git-checkout:/' /usr/local/bin/php.mk
+    mv /usr/local/bin/actions.mk /usr/local/bin/php.mk
 
 USER www-data
 
