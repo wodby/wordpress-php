@@ -25,4 +25,4 @@ init-wordpress:
 	WP_ROOT=$(WP_ROOT) init-wordpress.sh
 
 cache-clear:
-	wp cache flush --path=WP_ROOT
+	wp cache flush --path=$(WP_ROOT)
