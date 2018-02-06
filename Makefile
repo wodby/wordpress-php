@@ -2,7 +2,7 @@
 
 PHP_VER ?= 7.2
 
-FROM_TAG = $(PHP_VER)
+BASE_IMAGE_TAG = $(PHP_VER)
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(PHP_VER)
 
@@ -16,11 +16,11 @@ endif
 
 ifneq ($(PHP_DEV),)
     NAME := $(NAME)-dev
-    FROM_TAG := $(FROM_TAG)-dev
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev
 endif
 
-ifneq ($(FROM_STABILITY_TAG),)
-    FROM_TAG := $(FROM_TAG)-$(FROM_STABILITY_TAG)
+ifneq ($(BASE_IMAGE_STABILITY_TAG),)
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
 endif
 
 ifneq ($(STABILITY_TAG),)
@@ -34,7 +34,7 @@ endif
 default: build
 
 build:
-	docker build -t $(REPO):$(TAG) --build-arg FROM_TAG=$(FROM_TAG) ./
+	docker build -t $(REPO):$(TAG) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) ./
 
 test:
 	cd ./test/4 && IMAGE=$(REPO):$(TAG) ./run.sh

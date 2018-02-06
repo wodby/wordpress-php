@@ -24,7 +24,7 @@ $wodby['wp']['table_prefix'] = '{{ getenv "WP_TABLE_PREFIX" "wp_" }}';
 $wodby['wp']['debug'] = '{{ getenv "WP_DEBUG" "" }}';
 
 $wodby['redis']['host'] = '{{ getenv "REDIS_HOST" "" }}';
-$wodby['redis']['port'] = '{{ getenv "REDIS_SERVICE_PORT" "6379" }}';
+$wodby['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
 $wodby['redis']['password'] = '{{ getenv "REDIS_PASSWORD" "" }}';
 
 if (isset($_SERVER['HTTP_X_REAL_IP'])) {
@@ -53,6 +53,7 @@ defined('LOGGED_IN_KEY')    || define('LOGGED_IN_KEY', $wodby['wp']['logged_in_k
 defined('LOGGED_IN_SALT')   || define('LOGGED_IN_SALT', $wodby['wp']['logged_in_salt']);
 defined('NONCE_KEY')        || define('NONCE_KEY', $wodby['wp']['nonce_key']);
 defined('NONCE_SALT')       || define('NONCE_SALT', $wodby['wp']['nonce_salt']);
+defined('FS_METHOD')        || define('FS_METHOD', 'direct');
 
 if (!empty($wodby['redis']['host'])) {
   defined('WP_REDIS_HOST')     || define('WP_REDIS_HOST', $wodby['redis']['host']);

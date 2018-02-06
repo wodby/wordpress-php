@@ -4,9 +4,12 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/wordpress-php.svg)](https://microbadger.com/images/wodby/wordpress-php)
-[![Wodby Slack](http://slack.wodby.com/badge.svg)](http://slack.wodby.com)
 
 ## Docker Images
+
+!!! For better reliability we release images with stability tags (`wodby/wordpress-php:7.1-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We **STRONGLY RECOMMEND** using images only with stability tags. 
+
+Overview:
 
 * All images are based on Alpine Linux
 * Base image: [wodby/php](https://github.com/wodby/php)
@@ -35,6 +38,24 @@ For better reliability we additionally release images with stability tags (`wodb
 ## Environment Variables
 
 See at [wodby/php](https://github.com/wodby/php)
+
+## Orchestration Actions
+
+Usage:
+```
+make COMMAND [params ...]
+ 
+commands:
+    duplicator-import source
+    init-wordpress   
+    cache-clear
+    
+default params values:
+    target all
+    is_hash 0 
+```
+
+See [wodby/php](https://github.com/wodby/php) for all actions
 
 ## Complete WordPress Stack
 

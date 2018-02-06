@@ -13,7 +13,7 @@ if (!defined('ABSPATH')) {
 /**
  * Sets up wodby-specific configuration (must placed before wp-settings.php include).
  */
-require_once '{{ getenv "WODBY_DIR_CONF" }}/wodby.wp-config.php';
+require_once '{{ getenv "CONF_DIR" }}/wodby.wp-config.php';
 
 /**
  * Sets up WordPress vars and included files.
