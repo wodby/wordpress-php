@@ -20,6 +20,10 @@ ${disclaimer} \\
 require_once '${CONF_DIR}/wodby.wp-config.php';" "${wp_config}"
 fi
 
+chmod 775 "${WP_ROOT}/wp-content" || true
+chmod 775 "${WP_ROOT}/wp-content/plugins" || true
+chmod 775 "${WP_ROOT}/wp-content/themes" || true
+
 # Symlink files dir
 wp_content="${WP_ROOT}/wp-content"
 mkdir -p "${wp_content}"
