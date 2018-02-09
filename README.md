@@ -20,14 +20,14 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.2`, `latest` [_(Dockerfile)_]
+* `7`, `7.2`, `latest` [_(Dockerfile)_]
 * `7.1` [_(Dockerfile)_]
 * `7.0` [_(Dockerfile)_]
-* `5.6` [_(Dockerfile)_]
-* `7.2-dev` [_(Dockerfile)_]
+* `5`, `5.6` [_(Dockerfile)_]
+* `7-dev`, `7.2-dev` [_(Dockerfile)_]
 * `7.1-dev` [_(Dockerfile)_]
 * `7.0-dev` [_(Dockerfile)_]
-* `5.6-dev` [_(Dockerfile)_]
+* `5-dev`, `5.6-dev` [_(Dockerfile)_]
 
 For better reliability we additionally release images with stability tags (`wodby/wordpress-php:7.1-X.X.X`) which correspond to git tags. We **strongly recommend** using images only with stability tags. 
 

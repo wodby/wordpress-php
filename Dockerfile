@@ -6,12 +6,12 @@ USER root
 
 RUN set -ex; \
     \
-    su-exec www-data composer global require wp-cli/wp-cli; \
-    su-exec www-data composer clear-cache; \
+    su-exec wodby composer global require wp-cli/wp-cli; \
+    su-exec wodby composer clear-cache; \
     \
     mv /usr/local/bin/actions.mk /usr/local/bin/php.mk
 
-USER www-data
+USER wodby
 
 COPY templates /etc/gotpl/
 COPY actions /usr/local/bin
