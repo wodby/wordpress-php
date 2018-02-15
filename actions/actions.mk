@@ -10,6 +10,8 @@ __check_defined = \
       $(error Required parameter is missing: $1$(if $2, ($2))))
 
 ifeq ("$(DOCROOT_SUBDIR)", "")
+    WP_ROOT=$(APP_ROOT)
+else
     WP_ROOT="$(APP_ROOT)/$(DOCROOT_SUBDIR)"
 endif
 
