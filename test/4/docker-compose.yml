@@ -108,7 +108,7 @@ services:
     volumes:
       - codebase:/var/www/html
       - files:/mnt/files
-      - ./tests.sh:/usr/local/bin/tests.sh
+      - ./tests:/usr/local/bin/tests
 
 volumes:
   codebase:

@@ -19,10 +19,10 @@ default: cache-clear
 
 duplicator-import:
 	$(call check_defined, source)
-	duplicator-import.sh $(source)
+	duplicator_import $(source)
 
 init-wordpress:
-	WP_ROOT=$(WP_ROOT) init-wordpress.sh
+	WP_ROOT=$(WP_ROOT) sudo -E init_wordpress
 
 cache-clear:
 	wp cache flush --path=$(WP_ROOT)

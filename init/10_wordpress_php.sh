@@ -6,7 +6,7 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
-exec_tpl() {
+_gotpl() {
     if [[ -f "/etc/gotpl/$1" ]]; then
         gotpl "/etc/gotpl/$1" > "$2"
     fi
@@ -16,6 +16,6 @@ exec_tpl() {
 rm -f "${CONF_DIR}/wodby.settings.php"
 
 if [[ -n "${WODBY_APP_NAME}" && -n "${WP_VERSION}" ]]; then
-    exec_tpl "wodby.wp${WP_VERSION}-config.php.tpl" "${CONF_DIR}/wodby.wp-config.php"
-    exec_tpl "wp-config.php.tpl" "${CONF_DIR}/wp-config.php"
+    _gotpl "wodby.wp${WP_VERSION}-config.php.tpl" "${CONF_DIR}/wodby.wp-config.php"
+    _gotpl "wp-config.php.tpl" "${CONF_DIR}/wp-config.php"
 fi
