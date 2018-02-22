@@ -35,5 +35,10 @@ if [[ -d "${wp_content}/themes" ]]; then
     find "${wp_content}/themes" -type d -exec chown :www-data {} \; -exec chmod 775 {} \;
 fi
 
+if [[ -d "${wp_content}/upgrade" ]]; then
+    chown :www-data "${wp_content}/upgrade"
+    chmod 775 "${wp_content}/upgrade"
+fi
+
 # Symlink public files to files volume
 files_link "${wp_content}/uploads"
