@@ -20,11 +20,20 @@ ${disclaimer} \\
 require_once '${CONF_DIR}/wodby.wp-config.php';" "${wp_config}"
 fi
 
-# Symlink files dir
 wp_content="${WP_ROOT}/wp-content"
 su-exec wodby mkdir -p "${wp_content}"
-files_link "${wp_content}/uploads"
 
-# Update permissions to allow installing themes and plugins from WP admin dashboard.
-chown :www-data "${wp_content}" "${wp_content}/plugins" "${wp_content}/themes" || true
-chmod 775 "${wp_content}" "${wp_content}/plugins" "${wp_content}/themes" || true
+# Update permissions to allow installing/updating themes and plugins from WP admin dashboard.
+chown :www-data "${wp_content}"
+chmod 775 "${wp_content}"
+
+if [[ -d "${wp_content}/plugins" ]]; then
+    find "${wp_content}/plugins" -type d -exec chown :www-data {} \; -exec chmod 775 {} \;
+fi
+
+if [[ -d "${wp_content}/themes" ]]; then
+    find "${wp_content}/themes" -type d -exec chown :www-data {} \; -exec chmod 775 {} \;
+fi
+
+# Symlink public files to files volume
+files_link "${wp_content}/uploads"
