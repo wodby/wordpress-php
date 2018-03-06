@@ -29,12 +29,12 @@ chmod 775 "${wp_content}"
 
 if [[ -d "${wp_content}/plugins" ]]; then
     chown -R :www-data "${wp_content}/plugins"
-    chod -R :775 "${wp_content}/plugins"
+    chmod -R :775 "${wp_content}/plugins"
 fi
 
 if [[ -d "${wp_content}/themes" ]]; then
     chown -R :www-data "${wp_content}/themes"
-    chod -R :775 "${wp_content}/themes"
+    chmod -R :775 "${wp_content}/themes"
 fi
 
 if [[ -d "${wp_content}/upgrade" ]]; then
