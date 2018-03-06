@@ -28,16 +28,18 @@ chown :www-data "${wp_content}"
 chmod 775 "${wp_content}"
 
 if [[ -d "${wp_content}/plugins" ]]; then
-    find "${wp_content}/plugins" -type d -exec chown :www-data {} \; -exec chmod 775 {} \;
+    chown -R :www-data "${wp_content}/plugins"
+    chod -R :775 "${wp_content}/plugins"
 fi
 
 if [[ -d "${wp_content}/themes" ]]; then
-    find "${wp_content}/themes" -type d -exec chown :www-data {} \; -exec chmod 775 {} \;
+    chown -R :www-data "${wp_content}/themes"
+    chod -R :775 "${wp_content}/themes"
 fi
 
 if [[ -d "${wp_content}/upgrade" ]]; then
-    chown :www-data "${wp_content}/upgrade"
-    chmod 775 "${wp_content}/upgrade"
+    chown -R :www-data "${wp_content}/upgrade"
+    chmod -R 775 "${wp_content}/upgrade"
 fi
 
 # Symlink public files to files volume
