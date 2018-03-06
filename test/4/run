@@ -12,9 +12,9 @@ check_ready() {
 
 docker-compose up -d
 
-check_ready mariadb max_try=12
 check_ready nginx max_try=10
 check_ready php max_try=10
+check_ready mariadb max_try=12 wait_seconds=5
 
 # Fix php volumes permissions again
 # Docker sets ephemeral shared volume ownership to default user (wodby) in nginx container (started after php)
