@@ -47,5 +47,10 @@ if [[ -d "${wp_content}/languages" ]]; then
     chmod -R 775 "${wp_content}/languages"
 fi
 
+if [[ -d "${wp_content}/cache" ]]; then
+    chown -R :www-data "${wp_content}/cache"
+    chmod -R 775 "${wp_content}/cache"
+fi
+
 # Symlink public files to files volume
 files_link "${wp_content}/uploads"
