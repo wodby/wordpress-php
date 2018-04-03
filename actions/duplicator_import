@@ -9,7 +9,7 @@ fi
 source=$1
 tmp_dir="/tmp/source"
 
-get-archive.sh "${source}" "${tmp_dir}" "zip"
+get_archive "${source}" "${tmp_dir}" "zip"
 
 # Import db.
 if [[ -f "${tmp_dir}/database.sql" ]]; then
