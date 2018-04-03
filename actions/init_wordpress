@@ -27,30 +27,21 @@ su-exec wodby mkdir -p "${wp_content}"
 chown :www-data "${wp_content}"
 chmod 775 "${wp_content}"
 
-if [[ -d "${wp_content}/plugins" ]]; then
-    chown -R :www-data "${wp_content}/plugins"
-    chmod -R 775 "${wp_content}/plugins"
-fi
+declare -a writable_wp_content_dirs=(
+    "plugins"
+    "themes"
+    "upgrade"
+    "languages"
+    "cache"
+    "wp-rocket-config"
+)
 
-if [[ -d "${wp_content}/themes" ]]; then
-    chown -R :www-data "${wp_content}/themes"
-    chmod -R 775 "${wp_content}/themes"
-fi
-
-if [[ -d "${wp_content}/upgrade" ]]; then
-    chown -R :www-data "${wp_content}/upgrade"
-    chmod -R 775 "${wp_content}/upgrade"
-fi
-
-if [[ -d "${wp_content}/languages" ]]; then
-    chown -R :www-data "${wp_content}/languages"
-    chmod -R 775 "${wp_content}/languages"
-fi
-
-if [[ -d "${wp_content}/cache" ]]; then
-    chown -R :www-data "${wp_content}/cache"
-    chmod -R 775 "${wp_content}/cache"
-fi
+for dir in "${writable_wp_content_dirs[@]}"; do
+    if [[ -d "${wp_content}/${dir}" ]]; then
+        chown -R :www-data "${wp_content}/${dir}"
+        chmod -R 775 "${wp_content}/${dir}"
+    fi
+done
 
 # Symlink public files to files volume
 files_link "${wp_content}/uploads"
