@@ -23,5 +23,5 @@ if [[ "${IMAGE}" =~ "-dev-macos" ]]; then
     docker-compose exec php sudo init_volumes
 fi
 
-docker-compose exec php tests
+docker-compose exec php tests.sh
 docker-compose down
