@@ -1,0 +1,64 @@
+version: "2"
+
+services:
+  nginx:
+    image: wodby/nginx
+    environment:
+      NGINX_BACKEND_HOST: php
+      NGINX_VHOST_PRESET: wordpress
+      NGINX_SERVER_ROOT: /var/www/html
+      NGINX_SERVER_NAME: wordpress4.test
+    volumes:
+      - codebase:/var/www/html
+      - files:/mnt/files
+    depends_on:
+      - php
+
+  mariadb:
+    image: wodby/mariadb:10.1
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+      MYSQL_DATABASE: wordpress
+
+  redis:
+    image: wodby/redis:3.2
+    environment:
+      REDIS_PASSWORD: redis
+
+  php:
+    image: $IMAGE
+    environment:
+      DEBUG: 1
+      DOCROOT_SUBDIR: ""
+      WODBY_APP_NAME: test
+      BASE_URL: http://wordpress4.test
+      WP_VERSION: 4
+      WP_AUTH_KEY: wp-auth-key
+      WP_AUTH_SALT: wp-auth-salt
+      WP_SECURE_AUTH_KEY: wp-secure-auth-key
+      WP_SECURE_AUTH_SALT: wp-secure-auth-salt
+      WP_LOGGED_IN_KEY: wp-logged-in-key
+      WP_LOGGED_IN_SALT: wp-logged-in-salt
+      WP_NONCE_KEY: wp-nonce-key
+      WP_NONCE_SALT: wp-nonce-salt
+      WP_TABLE_PREFIX: wp_
+      WP_DEBUG: 0
+      DB_HOST: mariadb
+      DB_USER: wordpress
+      DB_PASSWORD: wordpress
+      DB_NAME: wordpress
+      DB_CHARSET: utf8
+      DB_COLLATION: ""
+      REDIS_HOST: redis
+      REDIS_PASSWORD: redis
+      PHP_SENDMAIL_PATH: /bin/true
+    volumes:
+      - codebase:/var/www/html
+      - files:/mnt/files
+      - ./tests.sh:/usr/local/bin/tests.sh
+
+volumes:
+  codebase:
+  files:
