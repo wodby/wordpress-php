@@ -15,7 +15,7 @@ services:
       - php
 
   mariadb:
-    image: wodby/mariadb:10.1
+    image: wodby/mariadb
     environment:
       MYSQL_ROOT_PASSWORD: password
       MYSQL_USER: wordpress
@@ -23,7 +23,7 @@ services:
       MYSQL_DATABASE: wordpress
 
   redis:
-    image: wodby/redis:3.2
+    image: wodby/redis
     environment:
       REDIS_PASSWORD: redis
 

@@ -37,6 +37,12 @@ For better reliability we additionally release images with stability tags (`wodb
 
 ## Tools
 
+[WP CLI]: https://github.com/wp-cli/wp-cli
+
+| Tool      | 7.2     | 7.1     | 7.0     | 5.6     |
+| --------- | ------- | ------- | ------- | ------- |
+| [WP CLI]  | 2.0.0   | 2.0.0   | 2.0.0   | 2.0.0   |
+
 [WP CLI (latest version)](https://packagist.org/packages/wp-cli/wp-cli)
 
 ## Environment Variables
