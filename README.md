@@ -32,13 +32,7 @@ Supported tags and respective `Dockerfile` links:
 
 ## Tools
 
-[WP CLI]: https://github.com/wp-cli/wp-cli
-
-| Tool      | 7.2     | 7.1     | 5.6     |
-| --------- | ------- | ------- | ------- |
-| [WP CLI]  | 2.0.0   | 2.0.0   | 2.0.0   |
-
-[WP CLI (latest version)](https://packagist.org/packages/wp-cli/wp-cli)
+This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.0.1
 
 ## Environment Variables
 
