@@ -7,7 +7,9 @@ REPO = wodby/wordpress-php
 NAME = wordpress-php-$(PHP_VER)
 
 ifeq ($(TAG),)
-    ifneq ($(PHP_DEV_MACOS),)
+    ifneq ($(PHP_DEBUG),)
+        TAG = $(PHP_VER)-debug
+    else ifneq ($(PHP_DEV_MACOS),)
     	TAG = $(PHP_VER)-dev-macos
     else ifneq ($(PHP_DEV),)
         TAG = $(PHP_VER)-dev
@@ -22,6 +24,9 @@ ifneq ($(PHP_DEV_MACOS),)
 else ifneq ($(PHP_DEV),)
     NAME := $(NAME)-dev
     BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev
+else ifneq ($(PHP_DEBUG),)
+    NAME := $(NAME)-debug
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-debug
 endif
 
 ifneq ($(BASE_IMAGE_STABILITY_TAG),)
