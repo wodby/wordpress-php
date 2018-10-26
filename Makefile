@@ -9,7 +9,7 @@ NAME = wordpress-php-$(PHP_VER)
 ifeq ($(TAG),)
     ifneq ($(PHP_DEBUG),)
         TAG = $(PHP_VER)-debug
-    ifneq ($(PHP_DEV_MACOS),)
+    else ifneq ($(PHP_DEV_MACOS),)
     	TAG = $(PHP_VER)-dev-macos
     else ifneq ($(PHP_DEV),)
         TAG = $(PHP_VER)-dev
