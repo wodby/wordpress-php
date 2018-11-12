@@ -2,6 +2,8 @@ ARG BASE_IMAGE_TAG
 
 FROM wodby/php:${BASE_IMAGE_TAG}
 
+ENV PHP_EXTENSIONS_DISABLE imagick
+
 USER root
 
 RUN set -ex; \
