@@ -9,14 +9,14 @@ RUN set -ex; \
     apk add --no-cache -t .fetch-deps gnupg; \
     \
     cd /tmp; \
-    wp_cli_version="2.0.1"; \
+    wp_cli_version="2.1.0"; \
     url="https://github.com/wp-cli/wp-cli/releases/download/v${wp_cli_version}/wp-cli-${wp_cli_version}.phar"; \
     curl -o wp.phar -fSL "${url}"; \
     curl -o wp.phar.asc -fSL "${url}.asc"; \
     \
     GPG_KEYS=63AF7AA15067C05616FDDD88A3A2E8F226F0BC06 gpg_verify /tmp/wp.phar.asc /tmp/wp.phar; \
     \
-    sha512="21b9c1d65993f88bf81cc73c0a832532cc424bea8c15563a77af1905d0dc4714f2af679dfadedd3b683f3968902b4b6be4c6cf94285da9f5582b30c1dac5397f"; \
+    sha512="c2ff556c21c85bbcf11be38d058224f53d3d57a1da45320ecf0079d480063dcdc11b5029b94b0b181c1e3bec84745300cd848d28065c0d3619f598980cc17244"; \
 	echo "${sha512} *wp.phar" | sha512sum -c -; \
 	\
     chmod +x wp.phar; \
