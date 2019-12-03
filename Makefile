@@ -1,6 +1,6 @@
 -include env_make
 
-PHP_VER ?= 7.3
+PHP_VER ?= 7.4
 
 BASE_IMAGE_TAG = $(PHP_VER)
 REPO = wodby/wordpress-php
