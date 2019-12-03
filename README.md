@@ -7,7 +7,7 @@
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/wordpress-php:7.3-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/wordpress-php:7.4-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability tags. 
 
 Overview:
 
@@ -20,15 +20,18 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.3`, `7`, `latest` [_(Dockerfile)_]
+* `7.4`, `7`, `latest` [_(Dockerfile)_]
+* `7.3` [_(Dockerfile)_]
 * `7.2` [_(Dockerfile)_]
 * `7.1` [_(Dockerfile)_]
 * `5.6`, `5` [_(Dockerfile)_]
-* `7.3-dev`, `7-dev`, `dev` [_(Dockerfile)_]
+* `7.4-dev`, `7-dev`, `dev` [_(Dockerfile)_]
+* `7.3-dev` [_(Dockerfile)_]
 * `7.2-dev` [_(Dockerfile)_]
 * `7.1-dev` [_(Dockerfile)_]
 * `5.6-dev`, `5-dev` [_(Dockerfile)_]
-* `7.3-dev-macos`, `7-dev-macos`, `dev-macos` [_(Dockerfile)_]
+* `7.4-dev-macos`, `7-dev-macos`, `dev-macos` [_(Dockerfile)_]
+* `7.3-dev-macos` [_(Dockerfile)_]
 * `7.2-dev-macos` [_(Dockerfile)_]
 * `7.1-dev-macos` [_(Dockerfile)_]
 * `5.6-dev-macos`, `5-dev-macos` [_(Dockerfile)_]
