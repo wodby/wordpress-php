@@ -4,8 +4,6 @@ services:
 - docker
 
 env:
-  global:
-  - BASE_IMAGE_STABILITY_TAG=4.12.13
   matrix:
   - PHP_VER=7.4 TAGS=7.4,7,latest
   - PHP_VER=7.3 TAGS=7.3
