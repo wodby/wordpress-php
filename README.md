@@ -23,18 +23,12 @@ Supported tags and respective `Dockerfile` links:
 * `7.4`, `7`, `latest` [_(Dockerfile)_]
 * `7.3` [_(Dockerfile)_]
 * `7.2` [_(Dockerfile)_]
-* `7.1` [_(Dockerfile)_]
-* `5.6`, `5` [_(Dockerfile)_]
 * `7.4-dev`, `7-dev`, `dev` [_(Dockerfile)_]
 * `7.3-dev` [_(Dockerfile)_]
 * `7.2-dev` [_(Dockerfile)_]
-* `7.1-dev` [_(Dockerfile)_]
-* `5.6-dev`, `5-dev` [_(Dockerfile)_]
 * `7.4-dev-macos`, `7-dev-macos`, `dev-macos` [_(Dockerfile)_]
 * `7.3-dev-macos` [_(Dockerfile)_]
 * `7.2-dev-macos` [_(Dockerfile)_]
-* `7.1-dev-macos` [_(Dockerfile)_]
-* `5.6-dev-macos`, `5-dev-macos` [_(Dockerfile)_]
 
 ## Tools
 
