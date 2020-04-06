@@ -8,6 +8,8 @@ services:
       NGINX_VHOST_PRESET: wordpress
       NGINX_SERVER_ROOT: /var/www/html
       NGINX_SERVER_NAME: wordpress4.test
+    ports:
+    - '8000:80'
     volumes:
       - codebase:/var/www/html
       - files:/mnt/files
@@ -34,7 +36,7 @@ services:
       DOCROOT_SUBDIR: ""
       WODBY_APP_NAME: test
       BASE_URL: http://wordpress4.test
-      WP_VERSION: 4
+      WP_VERSION: 5
       WP_AUTH_KEY: wp-auth-key
       WP_AUTH_SALT: wp-auth-salt
       WP_SECURE_AUTH_KEY: wp-secure-auth-key
