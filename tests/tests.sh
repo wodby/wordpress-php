@@ -26,7 +26,7 @@ wp cli version | grep -q 'WP-CLI'
 
 wp core download
 wp core config --dbname="${DB_NAME}" --dbuser="${DB_USER}" --dbpass="${DB_PASSWORD}" --dbhost="${DB_HOST}"
-wp core install --url="${BASE_URL}" --title="WordPress 4" --admin_user=admin --admin_password=admin --admin_email=admin@example.com
+wp core install --url="${BASE_URL}" --title="WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com
 wp core is-installed
 
 DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpress${WP_VERSION}/wodby-wordpress${WP_VERSION}-latest.zip"
