@@ -1,6 +1,6 @@
 # PHP for WordPress Docker Container Image
 
-[![Build Status](https://travis-ci.org/wodby/wordpress-php.svg?branch=master)](https://travis-ci.org/wodby/wordpress-php)
+[![Build Status](https://github.com/wodby/wordpress-php/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/wordpress-php/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Layers](https://images.microbadger.com/badges/image/wodby/wordpress-php.svg)](https://microbadger.com/images/wodby/wordpress-php)
@@ -11,24 +11,24 @@
 
 Overview:
 
-* All images are based on Alpine Linux
-* Base image: [wodby/php](https://github.com/wodby/php)
-* [Travis CI builds](https://travis-ci.org/wodby/wordpress-php) 
-* [Docker Hub](https://hub.docker.com/r/wodby/wordpress-php)
+- All images based on Alpine Linux
+- Base image: [wodby/php](https://github.com/wodby/php)
+- [GitHub actions builds](https://github.com/wodby/wordpress-php/actions) 
+- [Docker Hub](https://hub.docker.com/r/wodby/wordpress-php)
 
 [_(Dockerfile)_]: https://github.com/wodby/wordpress-php/tree/master/Dockerfile
 
 Supported tags and respective `Dockerfile` links:
 
-* `7.4`, `7`, `latest` [_(Dockerfile)_]
-* `7.3` [_(Dockerfile)_]
-* `7.2` [_(Dockerfile)_]
-* `7.4-dev`, `7-dev`, `dev` [_(Dockerfile)_]
-* `7.3-dev` [_(Dockerfile)_]
-* `7.2-dev` [_(Dockerfile)_]
-* `7.4-dev-macos`, `7-dev-macos`, `dev-macos` [_(Dockerfile)_]
-* `7.3-dev-macos` [_(Dockerfile)_]
-* `7.2-dev-macos` [_(Dockerfile)_]
+- `7.4`, `7`, `latest` [_(Dockerfile)_]
+- `7.3` [_(Dockerfile)_]
+- `7.2` [_(Dockerfile)_]
+- `7.4-dev`, `7-dev`, `dev` [_(Dockerfile)_]
+- `7.3-dev` [_(Dockerfile)_]
+- `7.2-dev` [_(Dockerfile)_]
+- `7.4-dev-macos`, `7-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `7.3-dev-macos` [_(Dockerfile)_]
+- `7.2-dev-macos` [_(Dockerfile)_]
 
 ## Tools
 
