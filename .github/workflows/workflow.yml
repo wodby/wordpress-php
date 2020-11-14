@@ -21,7 +21,6 @@ jobs:
         tags: 7.4,7,latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php73:
     runs-on: ubuntu-latest
     steps:
@@ -32,7 +31,6 @@ jobs:
         tags: 7.3
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php72:
     runs-on: ubuntu-latest
     steps:
@@ -43,7 +41,6 @@ jobs:
         tags: 7.2
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   ### dev
   php74-dev:
     runs-on: ubuntu-latest
@@ -56,7 +53,6 @@ jobs:
         tags: 7.4-dev,7-dev,dev
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php73-dev:
     runs-on: ubuntu-latest
     steps:
@@ -68,7 +64,6 @@ jobs:
         tags: 7.3-dev
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php72-dev:
     runs-on: ubuntu-latest
     steps:
@@ -80,7 +75,6 @@ jobs:
         tags: 7.2-dev
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   ### dev-macos
   php74-dev-macos:
     runs-on: ubuntu-latest
@@ -93,7 +87,6 @@ jobs:
         tags: 7.4-dev-macos,7-dev-macos,dev-macos
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php73-dev-macos:
     runs-on: ubuntu-latest
     steps:
@@ -105,7 +98,6 @@ jobs:
         tags: 7.3-dev-macos
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
   php72-dev-macos:
     runs-on: ubuntu-latest
     steps:
@@ -117,4 +109,3 @@ jobs:
         tags: 7.2-dev-macos
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
-        workdir: 7
