@@ -1,6 +1,6 @@
 ARG BASE_IMAGE_TAG
 
-FROM wodby/php:${BASE_IMAGE_TAG}
+FROM --platform=$BUILDPLATFORM wodby/php:${BASE_IMAGE_TAG}
 
 USER root
 

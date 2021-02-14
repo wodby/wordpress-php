@@ -23,15 +23,14 @@ Supported tags and respective `Dockerfile` links:
 - `8.0`, `8`, `latest` [_(Dockerfile)_]
 - `7.4`, `7` [_(Dockerfile)_]
 - `7.3` [_(Dockerfile)_]
-- `7.2` [_(Dockerfile)_]
 - `8.0-dev`, `8-dev`, `dev` [_(Dockerfile)_]
 - `7.4-dev`, `7-dev` [_(Dockerfile)_]
 - `7.3-dev` [_(Dockerfile)_]
-- `7.2-dev` [_(Dockerfile)_]
 - `8.0-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
 - `7.4-dev-macos`, `7-dev-macos` [_(Dockerfile)_]
 - `7.3-dev-macos` [_(Dockerfile)_]
-- `7.2-dev-macos` [_(Dockerfile)_]
+
+All images built for `linux/amd64`, `-dev-macos` images additionally built for `linux/arm64`
 
 ## Tools
 

@@ -6,6 +6,8 @@ BASE_IMAGE_TAG = $(PHP_VER)
 REPO = wodby/wordpress-php
 NAME = wordpress-php-$(PHP_VER)
 
+PLATFORM ?= linux/amd64
+
 ifeq ($(TAG),)
     ifneq ($(PHP_DEBUG),)
         TAG = $(PHP_VER)-debug
@@ -39,12 +41,18 @@ ifneq ($(STABILITY_TAG),)
     endif
 endif
 
-.PHONY: build test push shell run start stop logs clean release
+.PHONY: build buildx-build buildx-push test push shell run start stop logs clean release
 
 default: build
 
 build:
 	docker build -t $(REPO):$(TAG) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) ./
+
+buildx-build:
+	docker buildx build --platform $(PLATFORM) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) -t $(REPO):$(TAG) ./
+
+buildx-push:
+	docker buildx build --platform $(PLATFORM) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) --push -t $(REPO):$(TAG) ./
 
 test:
 	cd ./tests && IMAGE=$(REPO):$(TAG) ./run.sh
