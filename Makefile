@@ -48,11 +48,27 @@ default: build
 build:
 	docker build -t $(REPO):$(TAG) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) ./
 
+# --load doesn't work with multiple platforms https://github.com/docker/buildx/issues/59
+# we need to save cache to run tests first.
+buildx-build-amd64:
+	docker buildx build \
+		--platform linux/amd64 \
+		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
+		--load \
+		-t $(REPO):$(TAG) \
+		./
+
 buildx-build:
-	docker buildx build --platform $(PLATFORM) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) -t $(REPO):$(TAG) ./
+	docker buildx build \
+		--platform $(PLATFORM) \
+		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
+		-t $(REPO):$(TAG) ./
 
 buildx-push:
-	docker buildx build --platform $(PLATFORM) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) --push -t $(REPO):$(TAG) ./
+	docker buildx build --push \
+		--platform $(PLATFORM) \
+		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
+		-t $(REPO):$(TAG) ./
 
 test:
 	cd ./tests && IMAGE=$(REPO):$(TAG) ./run.sh
