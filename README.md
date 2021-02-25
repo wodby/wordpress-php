@@ -30,7 +30,7 @@ Supported tags and respective `Dockerfile` links:
 - `7.4-dev-macos`, `7-dev-macos` [_(Dockerfile)_]
 - `7.3-dev-macos` [_(Dockerfile)_]
 
-All images built for `linux/amd64`, `-dev-macos` images additionally built for `linux/arm64`
+All images built for `linux/amd64` and `linux/arm64`
 
 ## Tools
 
