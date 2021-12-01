@@ -1,6 +1,6 @@
 -include env_make
 
-PHP_VER ?= 8.0
+PHP_VER ?= 8.1
 
 BASE_IMAGE_TAG = $(PHP_VER)
 REGISTRY ?= docker.io
