@@ -3,11 +3,10 @@
 [![Build Status](https://github.com/wodby/wordpress-php/workflows/Build%20docker%20image/badge.svg)](https://github.com/wodby/wordpress-php/actions)
 [![Docker Pulls](https://img.shields.io/docker/pulls/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
 [![Docker Stars](https://img.shields.io/docker/stars/wodby/wordpress-php.svg)](https://hub.docker.com/r/wodby/wordpress-php)
-[![Docker Layers](https://images.microbadger.com/badges/image/wodby/wordpress-php.svg)](https://microbadger.com/images/wodby/wordpress-php)
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/wordpress-php:8.0-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/wordpress-php:8.1-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability tags. 
 
 Overview:
 
@@ -20,13 +19,16 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-- `8.0`, `8`, `latest` [_(Dockerfile)_]
+- `8.1`, `8`, `latest` [_(Dockerfile)_]
+- `8.0` [_(Dockerfile)_]
 - `7.4`, `7` [_(Dockerfile)_]
 - `7.3` [_(Dockerfile)_]
-- `8.0-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.1-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.0-dev` [_(Dockerfile)_]
 - `7.4-dev`, `7-dev` [_(Dockerfile)_]
 - `7.3-dev` [_(Dockerfile)_]
-- `8.0-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.1-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.0-dev-macos` [_(Dockerfile)_]
 - `7.4-dev-macos`, `7-dev-macos` [_(Dockerfile)_]
 - `7.3-dev-macos` [_(Dockerfile)_]
 

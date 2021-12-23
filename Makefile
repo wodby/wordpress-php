@@ -1,6 +1,6 @@
 -include env_make
 
-PHP_VER ?= 8.0
+PHP_VER ?= 8.1
 
 BASE_IMAGE_TAG = $(PHP_VER)
 REGISTRY ?= docker.io
@@ -72,7 +72,11 @@ buildx-push:
 		-t $(REPO):$(TAG) ./
 
 test:
+ifeq ($(PHP_VER),8.1)
+	@echo "WP-CLI doesn't yet fully support PHP 8.1"
+else
 	cd ./tests && IMAGE=$(REPO):$(TAG) ./run.sh
+endif
 
 push:
 	docker push $(REPO):$(TAG)
