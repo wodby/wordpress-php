@@ -30,7 +30,7 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '8.1'
-        tags: 8.1,8,latest
+        tags: '8.1'
         platform: linux/amd64,linux/arm64
   php80:
     runs-on: ubuntu-latest
@@ -43,7 +43,7 @@ jobs:
     - uses: ./.github/actions
       with:
         version: '8.0'
-        tags: '8.0'
+        tags: 8.0,8,latest
         platform: linux/amd64,linux/arm64
   php74:
     runs-on: ubuntu-latest
@@ -84,7 +84,7 @@ jobs:
       with:
         version: '8.1'
         dev: 1
-        tags: 8.1-dev,8-dev,dev
+        tags: 8.1-dev
         platform: linux/amd64,linux/arm64
   php80-dev:
     runs-on: ubuntu-latest
@@ -98,7 +98,7 @@ jobs:
       with:
         version: '8.0'
         dev: 1
-        tags: 8.0-dev
+        tags: 8.0-dev,8-dev,dev
         platform: linux/amd64,linux/arm64
   php74-dev:
     runs-on: ubuntu-latest
@@ -141,7 +141,7 @@ jobs:
       with:
         version: '8.1'
         dev_macos: 1
-        tags: 8.1-dev-macos,8-dev-macos,dev-macos
+        tags: 8.1-dev-macos
         platform: linux/amd64,linux/arm64
   php80-dev-macos:
     runs-on: ubuntu-latest
@@ -155,7 +155,7 @@ jobs:
       with:
         version: '8.0'
         dev_macos: 1
-        tags: 8.0-dev-macos
+        tags: 8.0-dev-macos,8-dev-macos,dev-macos
         platform: linux/amd64,linux/arm64
   php74-dev-macos:
     runs-on: ubuntu-latest
