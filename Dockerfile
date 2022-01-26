@@ -12,13 +12,6 @@ RUN set -ex; \
     wp_cli_version="2.6.0"; \
     url="https://github.com/wp-cli/wp-cli/releases/download/v${wp_cli_version}/wp-cli-${wp_cli_version}.phar"; \
     curl -o wp.phar -fSL "${url}"; \
-    curl -o wp.phar.asc -fSL "${url}.asc"; \
-    \
-    GPG_KEYS=63AF7AA15067C05616FDDD88A3A2E8F226F0BC06 gpg_verify /tmp/wp.phar.asc /tmp/wp.phar; \
-    \
-    sha512="08dd9035fda1d529807380d5b757839e2809e289eb1a698fe33e7e21a1431d3f77c551c2b2db5adc55083d5075ea4137407994111890f765e790a97e6d9ca7af"; \
-	echo "${sha512} *wp.phar" | sha512sum -c -; \
-	\
     chmod +x wp.phar; \
     mv wp.phar /usr/local/bin/wp; \
     \
