@@ -9,7 +9,7 @@ RUN set -ex; \
     apk add --no-cache -t .fetch-deps gnupg; \
     \
     cd /tmp; \
-    wp_cli_version="2.5.0"; \
+    wp_cli_version="2.6.0"; \
     url="https://github.com/wp-cli/wp-cli/releases/download/v${wp_cli_version}/wp-cli-${wp_cli_version}.phar"; \
     curl -o wp.phar -fSL "${url}"; \
     curl -o wp.phar.asc -fSL "${url}.asc"; \
