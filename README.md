@@ -6,29 +6,31 @@
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/wordpress-php:8.0-X.X.X`) which correspond to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability tags. 
+❗For better reliability we release images with stability tags (`wodby/wordpress-php:8.0-X.X.X`) which correspond
+to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability
+tags.
 
 Overview:
 
 - All images based on Alpine Linux
 - Base image: [wodby/php](https://github.com/wodby/php)
-- [GitHub actions builds](https://github.com/wodby/wordpress-php/actions) 
+- [GitHub actions builds](https://github.com/wodby/wordpress-php/actions)
 - [Docker Hub](https://hub.docker.com/r/wodby/wordpress-php)
 
 [_(Dockerfile)_]: https://github.com/wodby/wordpress-php/tree/master/Dockerfile
 
 Supported tags and respective `Dockerfile` links:
 
-- `8.1` [_(Dockerfile)_]
-- `8.0`, `8`, `latest` [_(Dockerfile)_]
+- `8.1`, `8`, `latest` [_(Dockerfile)_]
+- `8.0` [_(Dockerfile)_]
 - `7.4`, `7` [_(Dockerfile)_]
 - `7.3` [_(Dockerfile)_]
-- `8.1-dev` [_(Dockerfile)_]
-- `8.0-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.1-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.0-dev` [_(Dockerfile)_]
 - `7.4-dev`, `7-dev` [_(Dockerfile)_]
 - `7.3-dev` [_(Dockerfile)_]
-- `8.1-dev-macos` [_(Dockerfile)_]
-- `8.0-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.1-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.0-dev-macos` [_(Dockerfile)_]
 - `7.4-dev-macos`, `7-dev-macos` [_(Dockerfile)_]
 - `7.3-dev-macos` [_(Dockerfile)_]
 
@@ -45,6 +47,7 @@ See at [wodby/php](https://github.com/wodby/php)
 ## Orchestration Actions
 
 Usage:
+
 ```
 make COMMAND [params ...]
  
