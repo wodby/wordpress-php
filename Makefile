@@ -33,11 +33,11 @@ else ifneq ($(PHP_DEBUG),)
     BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-debug
 endif
 
+BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-alpine$(ALPINE_VER)
+
 ifneq ($(BASE_IMAGE_STABILITY_TAG),)
     BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
 endif
-
-BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-alpine$(ALPINE_VER)
 
 ifneq ($(STABILITY_TAG),)
     ifneq ($(TAG),latest)
