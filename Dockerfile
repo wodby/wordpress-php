@@ -6,6 +6,7 @@ USER root
 
 RUN set -ex; \
     \
+    apk add --no-cache -t .wordperss-php-run-deps p7zip; \
     apk add --no-cache -t .fetch-deps gnupg; \
     \
     cd /tmp; \
