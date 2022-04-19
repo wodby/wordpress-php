@@ -7,9 +7,6 @@ inputs:
   tags:
     description: image tags
     required: true
-  alpine_ver:
-    description: alpine version
-    required: true
   dev:
     description: dev version of image
     required: false
@@ -30,7 +27,6 @@ runs:
       PHP_DEV_MACOS: ${{ inputs.dev_macos }}
       TAGS: ${{ inputs.tags }}
       PLATFORM: ${{ inputs.platform }}
-      ALPINE_VER: ${{ inputs.alpine_ver }}
       DOCKER_REGISTRY: docker.io
     run: |
       set -e
