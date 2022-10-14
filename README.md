@@ -6,7 +6,7 @@
 
 ## Docker Images
 
-❗For better reliability we release images with stability tags (`wodby/wordpress-php:8.0-X.X.X`) which correspond
+❗For better reliability we release images with stability tags (`wodby/wordpress-php:8-X.X.X`) which correspond
 to [git tags](https://github.com/wodby/wordpress-php/releases). We strongly recommend using images only with stability
 tags.
 
@@ -35,7 +35,7 @@ All images built for `linux/amd64` and `linux/arm64`
 
 ## Tools
 
-This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.6.0
+This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.7.0
 
 ## Environment Variables
 
