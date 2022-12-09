@@ -21,15 +21,15 @@ Overview:
 
 Supported tags and respective `Dockerfile` links:
 
-- `8.1`, `8`, `alpine3.15`, `latest` [_(Dockerfile)_]
+- `8.2`, `8`, `latest` [_(Dockerfile)_]
+- `8.1` [_(Dockerfile)_]
 - `8.0` [_(Dockerfile)_]
-- `7.4`, `7` [_(Dockerfile)_]
-- `8.1-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.2-dev`, `8-dev`, `dev` [_(Dockerfile)_]
+- `8.1-dev` [_(Dockerfile)_]
 - `8.0-dev` [_(Dockerfile)_]
-- `7.4-dev`, `7-dev` [_(Dockerfile)_]
-- `8.1-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.2-dev-macos`, `8-dev-macos`, `dev-macos` [_(Dockerfile)_]
+- `8.1-dev-macos` [_(Dockerfile)_]
 - `8.0-dev-macos` [_(Dockerfile)_]
-- `7.4-dev-macos`, `7-dev-macos` [_(Dockerfile)_]
 
 All images built for `linux/amd64` and `linux/arm64`
 
