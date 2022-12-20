@@ -3,7 +3,11 @@
  * Wodby-specific configuration file.
  */
 
+{{- if getenv "WODBY_PRIMARY_URL" }}
+$wodby['base_url'] = '{{ getenv "WODBY_PRIMARY_URL" "" }}';
+{{- else }}
 $wodby['base_url'] = '{{ getenv "BASE_URL" "" }}';
+{{- end }}
 
 $wodby['db']['host'] = '{{ getenv "DB_HOST" "" }}';
 $wodby['db']['name'] = '{{ getenv "DB_NAME" "" }}';
