@@ -16,6 +16,7 @@ $wodby['db']['username'] = '{{ getenv "DB_USER" }}';
 {{- else }}
 $wodby['db']['username'] = '';
 {{- end }}
+{{- end }}
 
 $wodby['db']['password'] = '{{ getenv "DB_PASSWORD" "" }}';
 $wodby['db']['charset'] = '{{ getenv "DB_CHARSET" "utf8" }}';
