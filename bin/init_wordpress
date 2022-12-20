@@ -13,6 +13,7 @@ su-exec wodby mkdir -p "${WP_ROOT}"
 
 if [[ ! -f "${wp_config}" ]]; then
     su-exec wodby gotpl "/etc/gotpl/wp-config.php.tmpl" > "${wp_config}"
+    chown wodby:wodby "${wp_config}"
 elif [[ $( grep -ic "wodby.wp-config.php" "${wp_config}" ) -eq 0 ]]; then
     chmod 644 "${wp_config}"
     su-exec wodby sed -i "/wp-settings.php/i \\
