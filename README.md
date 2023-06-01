@@ -35,7 +35,7 @@ All images built for `linux/amd64` and `linux/arm64`
 
 ## Tools
 
-This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.7.1
+This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.8.0
 
 ## Environment Variables
 
