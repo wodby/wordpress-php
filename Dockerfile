@@ -18,6 +18,7 @@ RUN set -ex; \
     \
     url="https://raw.githubusercontent.com/wp-cli/wp-cli/v${wp_cli_version}/utils/wp-completion.bash"; \
     curl -o /usr/local/include/wp-completion.bash -fSL "${url}"; \
+    chmod +x /usr/local/include/wp-completion.bash; \
     cd /home/wodby; \
     echo "source /usr/local/include/wp-completion.bash" | tee -a .bash_profile .bashrc; \
     \
