@@ -29,7 +29,7 @@ wp core config --dbname="${DB_NAME}" --dbuser="${DB_USER}" --dbpass="${DB_PASSWO
 wp core install --url="${BASE_URL}" --title="WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com
 wp core is-installed
 
-DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpress${WP_VERSION}/wodby-wordpress${WP_VERSION}-latest.zip"
+DUPLICATOR_ARCHIVE_URL="https://s3-us-west-1.amazonaws.com/wodby-presets/wordpress5/wodby-wordpress5-latest.zip"
 FILES_ARCHIVE_URL="https://s3.amazonaws.com/wodby-sample-files/drupal-php-import-test/files.tar.gz"
 
 run_action duplicator-import source="${DUPLICATOR_ARCHIVE_URL}"
@@ -51,5 +51,5 @@ curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/logo.png" | grep -q
 echo "OK"
 
 echo -n "Checking WordPress homepage... "
-curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "Welcome to WordPress"
+curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "WordPress ${WP_VERSION}"
 echo "OK"
