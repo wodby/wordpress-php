@@ -41,6 +41,10 @@ $wodby['redis']['host'] = '{{ getenv "REDIS_HOST" "" }}';
 $wodby['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
 $wodby['redis']['password'] = '{{ getenv "REDIS_PASSWORD" "" }}';
 
+$wodby['valkey']['host'] = '{{ getenv "VALKEY_HOST" "" }}';
+$wodby['valkey']['port'] = '{{ getenv "VALKEY_PORT" "6379" }}';
+$wodby['valkey']['password'] = '{{ getenv "VALKEY_PASSWORD" "" }}';
+
 if (isset($_SERVER['HTTP_X_REAL_IP'])) {
   $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
 }
@@ -73,6 +77,12 @@ if (!empty($wodby['redis']['host'])) {
   defined('WP_REDIS_HOST')     || define('WP_REDIS_HOST', $wodby['redis']['host']);
   defined('WP_REDIS_PORT')     || define('WP_REDIS_PORT', $wodby['redis']['port']);
   defined('WP_REDIS_PASSWORD') || define('WP_REDIS_PASSWORD', $wodby['redis']['password']);
+}
+
+if (!empty($wodby['valkey']['host'])) {
+  defined('WP_REDIS_HOST')     || define('WP_REDIS_HOST', $wodby['valkey']['host']);
+  defined('WP_REDIS_PORT')     || define('WP_REDIS_PORT', $wodby['valkey']['port']);
+  defined('WP_REDIS_PASSWORD') || define('WP_REDIS_PASSWORD', $wodby['valkey']['password']);
 }
 
 isset($table_prefix) || $table_prefix  = $wodby['wp']['table_prefix'];
