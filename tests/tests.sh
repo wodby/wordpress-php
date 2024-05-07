@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# TODO: test redis and varnish plugins, create duplicator archive from CLI.
+# TODO: test valkey and varnish plugins, create duplicator archive from CLI.
 
 set -e
 
