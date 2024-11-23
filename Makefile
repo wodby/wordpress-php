@@ -1,13 +1,13 @@
 -include env_make
 
-PHP_VER ?= 8.3
+PHP_VER ?= 8.4
 
 BASE_IMAGE_TAG = $(PHP_VER)
 REGISTRY ?= docker.io
 REPO = $(REGISTRY)/wodby/wordpress-php
 NAME = wordpress-php-$(PHP_VER)
 
-PLATFORM ?= linux/amd64
+PLATFORM ?= linux/arm64
 
 ifeq ($(TAG),)
     ifneq ($(PHP_DEBUG),)
