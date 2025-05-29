@@ -40,10 +40,14 @@ $wodby['wp']['debug'] = '{{ getenv "WP_DEBUG" "" }}';
 $wodby['redis']['host'] = '{{ getenv "REDIS_HOST" "" }}';
 $wodby['redis']['port'] = '{{ getenv "REDIS_PORT" "6379" }}';
 $wodby['redis']['password'] = '{{ getenv "REDIS_PASSWORD" "" }}';
+$wodby['redis']['database'] = '{{ getenv "REDIS_DATABASE" "0" }}';
+$wodby['redis']['prefix'] = '{{ getenv "REDIS_PREFIX" }}';
 
 $wodby['valkey']['host'] = '{{ getenv "VALKEY_HOST" "" }}';
 $wodby['valkey']['port'] = '{{ getenv "VALKEY_PORT" "6379" }}';
 $wodby['valkey']['password'] = '{{ getenv "VALKEY_PASSWORD" "" }}';
+$wodby['valkey']['database'] = '{{ getenv "VALKEY_DATABASE" "0" }}';
+$wodby['valkey']['prefix'] = '{{ getenv "VALKEY_PREFIX" }}';
 
 if (isset($_SERVER['HTTP_X_REAL_IP'])) {
   $_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_REAL_IP'];
@@ -77,12 +81,20 @@ if (!empty($wodby['redis']['host'])) {
   defined('WP_REDIS_HOST')     || define('WP_REDIS_HOST', $wodby['redis']['host']);
   defined('WP_REDIS_PORT')     || define('WP_REDIS_PORT', $wodby['redis']['port']);
   defined('WP_REDIS_PASSWORD') || define('WP_REDIS_PASSWORD', $wodby['redis']['password']);
+  defined('WP_REDIS_DATABASE') || define('WP_REDIS_DATABASE', $wodby['redis']['database']);
+  if (!empty($wodby['redis']['prefix'])) {
+    defined('WP_REDIS_PREFIX') || define('WP_REDIS_PREFIX', $wodby['redis']['prefix']);
+  }  
 }
 
 if (!empty($wodby['valkey']['host'])) {
   defined('WP_REDIS_HOST')     || define('WP_REDIS_HOST', $wodby['valkey']['host']);
   defined('WP_REDIS_PORT')     || define('WP_REDIS_PORT', $wodby['valkey']['port']);
   defined('WP_REDIS_PASSWORD') || define('WP_REDIS_PASSWORD', $wodby['valkey']['password']);
+  defined('WP_REDIS_DATABASE') || define('WP_REDIS_DATABASE', $wodby['valkey']['database']);
+  if (!empty($wodby['valkey']['prefix'])) {
+    defined('WP_REDIS_PREFIX') || define('WP_REDIS_PREFIX', $wodby['valkey']['prefix']);
+  }  
 }
 
 isset($table_prefix) || $table_prefix  = $wodby['wp']['table_prefix'];
