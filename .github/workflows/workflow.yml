@@ -21,8 +21,8 @@ jobs:
           - arm64        
         variant:
           - { dev: '', dev_macos: '' }
-          - { dev: '1', dev_macos: '' }
-          - { dev: '', dev_macos: '1' }
+          - { dev: 'dev', dev_macos: '' }
+          - { dev: '', dev_macos: 'dev-macos' }
         include:
           - arch: amd64
             runner: ubuntu-24.04
