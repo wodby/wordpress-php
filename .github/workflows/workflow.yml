@@ -46,7 +46,6 @@ jobs:
   push:
     runs-on: ubuntu-latest
     needs:
-      - setup
       - build
     strategy:
       matrix:
