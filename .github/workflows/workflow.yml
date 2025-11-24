@@ -55,8 +55,8 @@ jobs:
         php: [ '8.5', '8.4', '8.3', '8.2', '8.1' ]
         variant:
           - { dev: '', dev_macos: '' }
-          - { dev: '1', dev_macos: '' }
-          - { dev: '', dev_macos: '1' }
+          - { dev: 'dev', dev_macos: '' }
+          - { dev: '', dev_macos: 'dev-macos' }
         include:
           - php: '8.5'
             latest: '1'
