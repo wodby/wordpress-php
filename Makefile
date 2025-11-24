@@ -21,6 +21,17 @@ ifeq ($(TAG),)
     endif
 endif
 
+ifneq ($(PHP_DEV_MACOS),)
+    NAME := $(NAME)-dev-macos
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev-macos
+else ifneq ($(PHP_DEV),)
+    NAME := $(NAME)-dev
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev
+else ifneq ($(PHP_DEBUG),)
+    NAME := $(NAME)-debug
+    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-debug
+endif
+
 ifneq ($(BASE_IMAGE_STABILITY_TAG),)
     BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
 endif
