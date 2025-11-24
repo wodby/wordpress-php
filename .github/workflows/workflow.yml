@@ -59,8 +59,8 @@ jobs:
           - { dev: '', dev_macos: 'dev-macos' }
         include:
           - php: '8.5'
-            latest: '1'
-            latest_major: '1'
+            latest: 'latest'
+            latest_major: 'latest-major'
     steps:
       - uses: actions/checkout@v6
       - uses: docker/login-action@v3
