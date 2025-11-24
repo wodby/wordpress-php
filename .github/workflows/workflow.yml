@@ -11,6 +11,9 @@ on:
 
   pull_request:
 
+env:
+  BASE_IMAGE_STABILITY_TAG: 4.61.0
+
 jobs:
   build:
     strategy:
