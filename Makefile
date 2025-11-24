@@ -1,6 +1,6 @@
 -include env_make
 
-PHP_VER ?= 8.4
+PHP_VER ?= 8.5
 
 BASE_IMAGE_TAG = $(PHP_VER)
 REGISTRY ?= docker.io
@@ -21,25 +21,14 @@ ifeq ($(TAG),)
     endif
 endif
 
-ifneq ($(PHP_DEV_MACOS),)
-    NAME := $(NAME)-dev-macos
-    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev-macos
-else ifneq ($(PHP_DEV),)
-    NAME := $(NAME)-dev
-    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-dev
-else ifneq ($(PHP_DEBUG),)
-    NAME := $(NAME)-debug
-    BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-debug
-endif
-
 ifneq ($(BASE_IMAGE_STABILITY_TAG),)
     BASE_IMAGE_TAG := $(BASE_IMAGE_TAG)-$(BASE_IMAGE_STABILITY_TAG)
 endif
 
-ifneq ($(STABILITY_TAG),)
-    ifneq ($(TAG),latest)
-        override TAG := $(TAG)-$(STABILITY_TAG)
-    endif
+IMAGETOOLS_TAG ?= $(TAG)
+
+ifneq ($(ARCH),)
+	override TAG := $(TAG)-$(ARCH)
 endif
 
 .PHONY: build buildx-build buildx-push test push shell run start stop logs clean release
@@ -48,16 +37,6 @@ default: build
 
 build:
 	docker build -t $(REPO):$(TAG) --build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) ./
-
-# --load doesn't work with multiple platforms https://github.com/docker/buildx/issues/59
-# we need to save cache to run tests first.
-buildx-build-amd64:
-	docker buildx build \
-		--platform linux/amd64 \
-		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
-		--load \
-		-t $(REPO):$(TAG) \
-		./
 
 buildx-build:
 	docker buildx build \
@@ -70,6 +49,12 @@ buildx-push:
 		--platform $(PLATFORM) \
 		--build-arg BASE_IMAGE_TAG=$(BASE_IMAGE_TAG) \
 		-t $(REPO):$(TAG) ./
+
+buildx-imagetools-create:
+	docker buildx imagetools create -t $(REPO):$(IMAGETOOLS_TAG) \
+				  $(REPO):$(TAG)-amd64 \
+				  $(REPO):$(TAG)-arm64
+.PHONY: buildx-imagetools-create 
 
 test:
 	cd ./tests && IMAGE=$(REPO):$(TAG) ./run.sh
