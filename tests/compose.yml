@@ -34,7 +34,6 @@ services:
       DOCROOT_SUBDIR: ""
       WODBY_APP_NAME: test
       BASE_URL: http://wordpress.test
-      WP_VERSION: 6
       WP_AUTH_KEY: wp-auth-key
       WP_AUTH_SALT: wp-auth-salt
       WP_SECURE_AUTH_KEY: wp-secure-auth-key

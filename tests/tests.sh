@@ -45,11 +45,12 @@ wp core is-installed
 rm wp-config.php
 run_action init-wordpress
 wp core is-installed
+wp_major_version="$(wp core version | cut -d. -f1)"
 
 echo -n "Checking imported files... "
 curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp-content/uploads/logo.png" | grep -q "200 OK"
 echo "OK"
 
 echo -n "Checking WordPress homepage... "
-curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "WordPress ${WP_VERSION}"
+curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "WordPress ${wp_major_version}"
 echo "OK"
