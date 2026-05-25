@@ -6,10 +6,26 @@ if [[ -n "${DEBUG}" ]]; then
     set -x
 fi
 
+compose_down() {
+    docker compose down -v --remove-orphans
+}
+
+cleanup() {
+    local status=$?
+
+    trap - EXIT
+    compose_down >/dev/null 2>&1 || true
+
+    exit "${status}"
+}
+
 check_ready() {
     docker compose exec -T "${1}" make check-ready "${@:2}" -f /usr/local/bin/actions.mk
 }
 
+trap cleanup EXIT
+
+compose_down >/dev/null 2>&1 || true
 docker compose up -d
 
 check_ready nginx max_try=10
@@ -24,4 +40,3 @@ if [[ "${IMAGE}" =~ "-dev-macos" ]]; then
 fi
 
 docker compose exec -T php tests.sh
-docker compose down
