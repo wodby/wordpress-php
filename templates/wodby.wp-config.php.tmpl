@@ -9,7 +9,12 @@ $wodby['base_url'] = '{{ getenv "WODBY_PRIMARY_URL" "" }}';
 $wodby['base_url'] = '{{ getenv "BASE_URL" "" }}';
 {{- end }}
 
+// WordPress takes a port other than the default as part of the host.
+{{- if and (getenv "DB_HOST") (getenv "DB_PORT") (ne (getenv "DB_PORT") "3306") }}
+$wodby['db']['host'] = '{{ getenv "DB_HOST" }}:{{ getenv "DB_PORT" }}';
+{{- else }}
 $wodby['db']['host'] = '{{ getenv "DB_HOST" "" }}';
+{{- end }}
 $wodby['db']['name'] = '{{ getenv "DB_NAME" "" }}';
 
 {{- if getenv "DB_USERNAME" }}
@@ -68,7 +73,7 @@ defined('DB_CHARSET')  || define('DB_CHARSET', $wodby['db']['charset']);
 defined('DB_COLLATE')  || define('DB_COLLATE', $wodby['db']['collation']);
 
 defined('AUTH_KEY')         || define('AUTH_KEY', $wodby['wp']['auth_key']);
-defined('AUTH_SALT')        || define('AUTH_SALT',$wodby['wp']['auth_key']);
+defined('AUTH_SALT')        || define('AUTH_SALT', $wodby['wp']['auth_salt']);
 defined('SECURE_AUTH_KEY')  || define('SECURE_AUTH_KEY', $wodby['wp']['secure_auth_key']);
 defined('SECURE_AUTH_SALT') || define('SECURE_AUTH_SALT', $wodby['wp']['secure_auth_salt']);
 defined('LOGGED_IN_KEY')    || define('LOGGED_IN_KEY', $wodby['wp']['logged_in_key']);
