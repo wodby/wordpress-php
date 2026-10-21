@@ -30,6 +30,7 @@ $wodby['db']['username'] = '';
 $wodby['db']['password'] = '{{ getenv "DB_PASSWORD" "" }}';
 $wodby['db']['charset'] = '{{ getenv "DB_CHARSET" "utf8" }}';
 $wodby['db']['collation'] = '{{ getenv "DB_COLLATION" "" }}';
+$wodby['db']['ssl_ca'] = '{{ getenv "DB_SSL_CA" "" }}';
 
 $wodby['wp']['auth_key'] = '{{ getenv "WP_AUTH_KEY" "" }}';
 $wodby['wp']['auth_salt'] = '{{ getenv "WP_AUTH_SALT" "" }}';
@@ -71,6 +72,13 @@ defined('DB_USER')     || define('DB_USER', $wodby['db']['username']);
 defined('DB_PASSWORD') || define('DB_PASSWORD', $wodby['db']['password']);
 defined('DB_CHARSET')  || define('DB_CHARSET', $wodby['db']['charset']);
 defined('DB_COLLATE')  || define('DB_COLLATE', $wodby['db']['collation']);
+
+// Wodby mounts the CA certificate of a managed database server, such as an Amazon RDS server that accepts only TLS
+// connections, and sets its path: connect with TLS then. WordPress passes only client flags to mysqli, so the connection
+// is encrypted but the server certificate is not verified.
+if (!empty($wodby['db']['ssl_ca'])) {
+  defined('MYSQL_CLIENT_FLAGS') || define('MYSQL_CLIENT_FLAGS', MYSQLI_CLIENT_SSL);
+}
 
 defined('AUTH_KEY')         || define('AUTH_KEY', $wodby['wp']['auth_key']);
 defined('AUTH_SALT')        || define('AUTH_SALT', $wodby['wp']['auth_salt']);
