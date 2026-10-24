@@ -7,6 +7,9 @@ FROM ${BASE_IMAGE}
 
 USER root
 
+# Refresh inherited security fixes when rebuilding this image.
+RUN apk upgrade --no-cache
+
 RUN set -ex; \
     \
     apk add --no-cache -t .wordperss-php-run-deps p7zip; \
