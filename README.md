@@ -46,7 +46,22 @@ This image comes with [WP CLI](https://github.com/wp-cli/wp-cli) version 2.12.0
 
 ## Environment Variables
 
-See at [wodby/php](https://github.com/wodby/php)
+See at [wodby/php](https://github.com/wodby/php). In addition:
+
+| Variable                        | Default | Description                                                                                       |
+|---------------------------------|---------|---------------------------------------------------------------------------------------------------|
+| `WP_DISALLOW_FILE_MODS`         |         | Any value sets `DISALLOW_FILE_MODS`: no plugin and theme installs, updates or file editor in wp-admin |
+| `WP_AUTOMATIC_UPDATER_DISABLED` |         | Any value sets `AUTOMATIC_UPDATER_DISABLED`: no background updates                                |
+
+Set both when the code is deployed as an image and cannot be changed at runtime.
+
+## WordPress core in a subdirectory
+
+A Composer project can install WordPress core in the `wp` subdirectory of the web root and keep its themes, plugins and
+uploads in `wp-content` next to it, so that core installs and updates never delete them. When `wp/wp-settings.php`
+exists in the web root, the generated configuration points `WP_SITEURL` to `/wp` and `WP_CONTENT_DIR` and
+`WP_CONTENT_URL` to the `wp-content` directory of the web root. The web root then needs an `index.php` that loads
+`wp/wp-blog-header.php`, and WP-CLI commands take `--path=<web root>/wp`.
 
 ## Orchestration Actions
 
