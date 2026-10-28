@@ -63,8 +63,27 @@ if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROT
   $_SERVER['HTTPS'] = 'on';
 }
 
+// A Composer project can install WordPress core in the "wp" subdirectory of the web root and keep its themes, plugins
+// and uploads in wp-content next to it, where core installs and updates never touch them. The site then answers at the
+// web root, and core, including wp-admin, at /wp.
+$wodby['web_root'] = rtrim('{{ getenv "APP_ROOT" }}/{{ getenv "DOCROOT_SUBDIR" "" }}', '/');
+if (is_file($wodby['web_root'] . '/wp/wp-settings.php')) {
+  defined('WP_SITEURL')     || define('WP_SITEURL', $wodby['base_url'] . '/wp');
+  defined('WP_CONTENT_DIR') || define('WP_CONTENT_DIR', $wodby['web_root'] . '/wp-content');
+  defined('WP_CONTENT_URL') || define('WP_CONTENT_URL', $wodby['base_url'] . '/wp-content');
+}
+
 defined('WP_HOME')    || define('WP_HOME', $wodby['base_url']);
 defined('WP_SITEURL') || define('WP_SITEURL', $wodby['base_url']);
+
+// Code that is deployed as an image cannot be changed from wp-admin: hide plugin and theme installs, updates and the file
+// editor, and stop background updates that would fail.
+{{- if getenv "WP_DISALLOW_FILE_MODS" }}
+defined('DISALLOW_FILE_MODS') || define('DISALLOW_FILE_MODS', true);
+{{- end }}
+{{- if getenv "WP_AUTOMATIC_UPDATER_DISABLED" }}
+defined('AUTOMATIC_UPDATER_DISABLED') || define('AUTOMATIC_UPDATER_DISABLED', true);
+{{- end }}
 
 defined('DB_HOST')     || define('DB_HOST', $wodby['db']['host']);
 defined('DB_NAME')     || define('DB_NAME', $wodby['db']['name']);

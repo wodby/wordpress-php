@@ -54,3 +54,22 @@ echo "OK"
 echo -n "Checking WordPress homepage... "
 curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "WordPress ${wp_major_version}"
 echo "OK"
+
+# A Composer project with WordPress core in the wp subdirectory and wp-content next to it.
+echo -n "Checking WordPress core in a wp subdirectory... "
+cd "${WP_ROOT}"
+find . -mindepth 1 -maxdepth 1 ! -name wp-content -exec rm -rf {} +
+rm -rf wp-content/themes wp-content/plugins
+wp core download --path=wp
+mkdir -p wp-content/themes
+cp -R wp/wp-content/themes/twenty* wp-content/themes/
+printf "<?php\ndefine('WP_USE_THEMES', true);\nrequire __DIR__ . '/wp/wp-blog-header.php';\n" > index.php
+run_action init-wordpress
+wp db reset --yes --path=wp
+wp core install --path=wp --url="${BASE_URL}" --title="WordPress" --admin_user=admin --admin_password=admin --admin_email=admin@example.com
+wp option get siteurl --path=wp | grep -q "${BASE_URL}/wp$"
+wp eval 'echo WP_CONTENT_DIR;' --path=wp | grep -qx "${WP_ROOT}/wp-content"
+run_action cache-clear
+curl -s -H "host: ${WP_DOMAIN}" "nginx" | grep -q "${BASE_URL}/wp-content/themes/"
+curl -s -I -H "host: ${WP_DOMAIN}" "nginx/wp/wp-login.php" | grep -q "200 OK"
+echo "OK"

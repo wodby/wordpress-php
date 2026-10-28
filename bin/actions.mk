@@ -24,5 +24,8 @@ duplicator-import:
 init-wordpress:
 	WP_ROOT=$(WP_ROOT) sudo -E init_wordpress
 
+# WordPress core sits in the web root, or in its wp subdirectory in a Composer project that keeps wp-content apart.
+WP_CORE=$$(test -f $(WP_ROOT)/wp/wp-settings.php && echo $(WP_ROOT)/wp || echo $(WP_ROOT))
+
 cache-clear:
-	wp cache flush --path=$(WP_ROOT)
+	wp cache flush --path=$(WP_CORE)
