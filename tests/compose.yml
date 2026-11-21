@@ -54,6 +54,9 @@ services:
       VALKEY_PASSWORD: valkey
       PHP_SENDMAIL_PATH: /bin/true
       PHP_ERROR_REPORTING: E_ALL & ~E_NOTICE & ~E_STRICT & ~E_DEPRECATED
+      # The tests replace PHP files and request them again within seconds; check
+      # timestamps on every request so OPcache never serves a replaced file.
+      PHP_OPCACHE_REVALIDATE_FREQ: 0
     volumes:
       - codebase:/var/www/html
       - files:/mnt/files
